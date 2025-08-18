@@ -5,6 +5,7 @@ import "@/styles/globals.css";
 import Layout from "@/components/layout/Layout";
 import SplashScreen from "@/components/splash/SplashScreen";
 import Head from "next/head";
+import { RecoilRoot } from "recoil";
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   const [isLoading, setIsLoading] = useState(true);
@@ -22,7 +23,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   }
 
   return (
-    <>
+    <RecoilRoot>
       <Head>
         <title>KukkeKart</title>
         <link rel="icon" href="./favicon.png" />
@@ -30,6 +31,6 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       <Layout>
         <Component {...pageProps} />
       </Layout>
-    </>
+    </RecoilRoot>
   );
 }

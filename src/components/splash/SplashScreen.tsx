@@ -1,4 +1,3 @@
-// src/components/SplashScreen.tsx
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -17,22 +16,22 @@ export default function SplashScreen() {
       {isVisible && (
         <motion.div
           key="splash"
-          className="flex items-center justify-center h-screen bg-white"
+          className="flex items-center justify-center h-screen bg-amber-50"
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.8 }}
         >
           <motion.div
             initial={{ scale: 0.5, opacity: 0 }}
-            animate={{ scale: [0.5, 1.1, 1], opacity: 1 }}
-            transition={{ duration: 1.5, ease: "easeOut" }}
+            animate={{ scale: [0.5, 1.3, 1], opacity: 1 }}
+            transition={{ duration: 1, ease: "easeOut" }}
           >
             <Image
               src={logo}
               alt="Logo"
               width={500}
               height={500}
-              className="rounded-full"
+              className="rounded-full shadow-2xl shadow-black"
             />
           </motion.div>
         </motion.div>
