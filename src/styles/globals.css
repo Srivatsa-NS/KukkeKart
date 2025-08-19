@@ -1,21 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Qwitcher+Grypen:wght@400;700&display=swap");
 @import "tailwindcss";
 
-.body-style {
-  background-color: #92400e;
+.common-font {
+  font-family: "Qwitcher Grypen", cursive;
+  font-weight: 700;
+  font-style: normal;
 }
 
 .menu-item {
-  font-family: "Qwitcher Grypen", cursive;
-  font-weight: 700;
-  font-style: normal;
   font-size: 2.2rem;
-}
-
-.hero-text {
-  font-family: "Qwitcher Grypen", cursive;
-  font-weight: 700;
-  font-style: normal;
-  font-size: 2.5rem;
-  color: #92400e;
 }
