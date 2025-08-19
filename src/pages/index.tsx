@@ -43,7 +43,7 @@ function Index() {
             homemade spices that transform every dish.
           </p>
           <div
-            className="my-5"
+            className="my-14"
             onClick={() => {
               setCurrentPage("/products");
             }}
