@@ -5,7 +5,7 @@ function Button({ name, isHovered }: { name: string; isHovered?: boolean }) {
     <div
       className={`w-48 h-16 text-3xl common-font rounded-4xl flex items-center border-3 justify-center hover:cursor-pointer duration-500 shadow-xl ${
         isHovered
-          ? "text-amber-50 bg-amber-800 border-amber-50 shadow-amber-50"
+          ? "text-amber-50 bg-amber-800 border-amber-50 shadow-amber-500"
           : "text-amber-800 bg-amber-50 border-amber-800 shadow-amber-950"
       }`}
     >
