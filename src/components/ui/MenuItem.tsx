@@ -28,7 +28,7 @@ const MenuItem = ({ label, route }: { label: string; route: string }) => {
         onClick={() => {
           setCurrentPage(route);
         }}
-        className="mx-4 px-7 rounded-2xl menu-item common-font hover:cursor-pointer"
+        className="mx-4 px-5 rounded-2xl menu-item common-font hover:cursor-pointer"
       >
         {label}
       </motion.div>

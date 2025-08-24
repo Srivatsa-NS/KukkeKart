@@ -23,7 +23,7 @@ export default function SplashScreen() {
         >
           <motion.div
             initial={{ scale: 0.5, opacity: 0 }}
-            animate={{ scale: [0.5, 1.3, 1], opacity: 1 }}
+            animate={{ scale: [0.5, 0.9, 0.7], opacity: 1 }}
             transition={{ duration: 1, ease: "easeOut" }}
           >
             <Image
