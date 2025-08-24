@@ -84,7 +84,7 @@ function Carousel() {
             <ScrollAnimation>
               {slide.buy && (
                 <div className="mt-7">
-                  <BrownButton name="Add to Cart" />
+                  <BrownButton name="Add to Cart" textSize="2xl"/>
                 </div>
               )}
             </ScrollAnimation>
@@ -96,7 +96,7 @@ function Carousel() {
         className="absolute left-10 top-1/3 -translate-y-1/2"
         onClick={prevSlide}
       >
-        <BrownButton name="<" />
+        <BrownButton name="<" textSize="4xl"/>
       </div>
 
       <div className="absolute mb-5 bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-3">
@@ -115,7 +115,7 @@ function Carousel() {
         className="absolute right-10 top-1/3 -translate-y-1/2"
         onClick={nextSlide}
       >
-        <BrownButton name=">" />
+        <BrownButton name=">" textSize="4xl"/>
       </div>
     </div>
   );
