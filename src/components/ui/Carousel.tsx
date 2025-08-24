@@ -99,7 +99,7 @@ function Carousel() {
         <BrownButton name="<" />
       </div>
 
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-2">
+      <div className="absolute mb-5 bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-3">
         {slides.map((_, i) => (
           <button
             key={i}
