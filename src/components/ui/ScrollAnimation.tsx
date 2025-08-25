@@ -1,4 +1,3 @@
-import React from "react";
 import { motion } from "framer-motion";
 
 interface ScrollAnimationProps {
@@ -13,7 +12,7 @@ function ScrollAnimation({ children, className = "" }: ScrollAnimationProps) {
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
-      viewport={{ once: true }}
+      viewport={{ once: true, amount: 0.3 }}
     >
       {children}
     </motion.div>

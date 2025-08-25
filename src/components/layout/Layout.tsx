@@ -15,7 +15,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   }, []);
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-amber-50">
       <div className="fixed top-0 left-0 w-full h-20 z-50 group">
         <div className={`${isAtTop ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'} transition-opacity duration-500`}>
           <Header />

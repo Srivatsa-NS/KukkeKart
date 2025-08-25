@@ -1,16 +1,15 @@
 import heroImage from "@/assets/images/hero-image.jpg";
+import { bestSellers } from "@/constants/CarouselSlides";
+import { categories } from "@/constants/GridItems";
 import Image from "next/image";
 import { motion, useAnimation } from "framer-motion";
-import Button from "@/components/ui/Button";
 import Link from "next/link";
 import { useSetRecoilState } from "recoil";
 import { currentPageState } from "@/store/pageState";
-import { useState } from "react";
 import Carousel from "@/components/ui/Carousel";
 import ScrollAnimation from "@/components/ui/ScrollAnimation";
-import BrownButton from "@/components/ui/BrownButton";
 import ArrowButton from "@/components/ui/ArrowButton";
-import BrownArrowButton from "@/components/ui/BrownArrowButton";
+import Grid from "@/components/ui/ImageGrid";
 
 function Index() {
   const controls = useAnimation();
@@ -60,25 +59,24 @@ function Index() {
           </motion.div>
         </div>
       </div>
-      <ScrollAnimation className="relative bg-amber-50 flex items-center w-full px-10 py-10 text-amber-800">
+      <ScrollAnimation className="relative mb-10 bg-amber-50 items-center w-full px-10 py-10 text-amber-800">
         <p className="common-font text-6xl absolute left-1/2 -translate-x-1/2">
           Our Best Sellers
         </p>
-        <div
-          className="ml-auto"
-          onClick={() => {
-            setCurrentPage("/products");
-          }}
-        >
-          <Link href={"/products"}>
-            <BrownArrowButton name="More products" textSize="2xl" />
-          </Link>
-        </div>
       </ScrollAnimation>
-
       <ScrollAnimation className="bg-amber-50">
-        <Carousel />
+        <Carousel slides={bestSellers} />
       </ScrollAnimation>
+      <div className="bg-amber-800">
+        <ScrollAnimation className="bg-amber-800 items-center w-full pt-10 text-amber-50">
+          <p className="common-font text-6xl absolute left-1/2 -translate-x-1/2">
+            Our Assortment
+          </p>
+        </ScrollAnimation>
+        <ScrollAnimation>
+          <Grid gridItems={categories} />
+        </ScrollAnimation>
+      </div>
     </div>
   );
 }
