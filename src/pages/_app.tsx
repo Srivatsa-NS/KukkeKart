@@ -18,9 +18,9 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     return () => clearTimeout(timer);
   }, []);
 
-  // if (isLoading) {
-  //   return <SplashScreen />;
-  // }
+  if (isLoading) {
+    return <SplashScreen />;
+  }
 
   return (
     <RecoilRoot>
