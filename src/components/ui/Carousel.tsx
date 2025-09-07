@@ -3,6 +3,7 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import BrownButton from "./BrownButton";
 import ScrollAnimation from "./ScrollAnimation";
+import { primaryColor, secondaryColor } from "@/constants/colors";
 
 interface Slide {
   image: any;
@@ -84,7 +85,7 @@ function Carousel({ slides }: CarouselProps) {
             key={i}
             onClick={() => setCurrent(i)}
             className={`w-4 h-4 rounded-full hover:cursor-pointer ${
-              current === i ? "bg-amber-950" : "bg-amber-800"
+              current === i ? "bg-amber-950" : `bg-${primaryColor}`
             }`}
           />
         ))}

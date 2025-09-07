@@ -1,6 +1,7 @@
 import Header from "./Header";
 import Footer from "./Footer";
 import { useState, useEffect } from "react";
+import { secondaryColor } from "@/constants/colors";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const [isAtTop, setIsAtTop] = useState(true);
@@ -15,9 +16,13 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   }, []);
 
   return (
-    <div className="flex flex-col min-h-screen bg-amber-50">
+    <div className={`flex flex-col min-h-screen bg-${secondaryColor}`}>
       <div className="fixed top-0 left-0 w-full h-20 z-50 group">
-        <div className={`${isAtTop ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'} transition-opacity duration-500`}>
+        <div
+          className={`${
+            isAtTop ? "opacity-100" : "opacity-0 group-hover:opacity-100"
+          } transition-opacity duration-500`}
+        >
           <Header />
         </div>
       </div>

@@ -2,6 +2,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import ArrowButton from "./ArrowButton";
+import { primaryColor, secondaryColor } from "@/constants/colors";
 
 interface GridCarouselItem {
   image: any;
@@ -36,18 +37,18 @@ function GridCarousel({ items }: GridCarouselProps) {
         {items.map((item, index) => (
           <div
             key={index}
-            className="group flex flex-col items-center p-10 border-3 rounded-3xl shadow-xl duration-500 common-font
-            bg-amber-50 border-amber-800 shadow-amber-950 text-amber-800 hover:cursor-pointer
-            hover:bg-amber-800 hover:border-amber-50 hover:shadow-amber-500 hover:text-amber-50
-            hover:scale-110 transform flex-shrink-0"
+            className={`group flex flex-col items-center p-10 border-3 rounded-3xl shadow-xl duration-500 common-font
+            bg-${secondaryColor} border-${primaryColor} shadow-amber-950 text-${primaryColor} hover:cursor-pointer
+            hover:bg-${primaryColor} hover:border-${secondaryColor} hover:shadow-${secondaryColor}0 hover:text-${secondaryColor}
+            hover:scale-110 hover:z-10 transform origin-center flex-shrink-0`}
             style={{ width: "calc(25% - 1.5rem)" }}
           >
             <Image
               src={item.image}
               alt={item.alt}
-              className="w-48 h-80 object-cover rounded-2xl mb-6 group-hover:w-80 duration-500"
+              className="w-48 h-80 object-cover rounded-2xl mb-6"
             />
-            <p className="text-4xl text-center group-hover:text-5xl duration-500">{item.name}</p>
+            <p className="text-4xl text-center">{item.name}</p>
           </div>
         ))}
         <div
@@ -61,7 +62,7 @@ function GridCarousel({ items }: GridCarouselProps) {
       {currentPage > 0 && (
         <button
           onClick={prevPage}
-          className="absolute left-5 top-1/2 -translate-y-1/2 bg-black/30 text-white p-3 rounded-full hover:bg-black/50 transition-all"
+          className="absolute left-5 top-1/2 -translate-y-1/2 bg-black/30 text-white w-12 h-12 flex items-center justify-center rounded-full hover:bg-black/50 transition-all cursor-pointer z-20"
         >
           {"<"}
         </button>
@@ -70,7 +71,7 @@ function GridCarousel({ items }: GridCarouselProps) {
       {currentPage < totalPages - 1 && (
         <button
           onClick={nextPage}
-          className="absolute right-5 top-1/2 -translate-y-1/2 bg-black/30 text-white p-3 rounded-full hover:bg-black/50 transition-all"
+          className="absolute right-5 top-1/2 -translate-y-1/2 bg-black/30 text-white w-12 h-12 flex items-center justify-center rounded-full hover:bg-black/50 transition-all cursor-pointer z-20"
         >
           {">"}
         </button>

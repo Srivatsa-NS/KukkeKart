@@ -1,7 +1,8 @@
 import Image from "next/image";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import headerImage from "@/assets/icons/kukkekart_logo.jpeg";
 import MenuItem from "@/components/ui/MenuItem";
+import { secondaryColor } from "@/constants/colors";
 
 const container = {
   visible: {
@@ -21,7 +22,7 @@ const menuItems = {
 
 function Header() {
   return (
-    <div className="bg-amber-50 flex items-center justify-between">
+    <div className={`bg-${secondaryColor} flex items-center justify-between`}>
       <Image
         src={headerImage}
         alt="Logo"

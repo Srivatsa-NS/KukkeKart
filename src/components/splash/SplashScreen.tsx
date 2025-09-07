@@ -2,6 +2,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import logo from "@/assets/icons/kukkekart_intro.jpeg";
+import { secondaryColor } from "@/constants/colors";
 
 export default function SplashScreen() {
   const [isVisible, setIsVisible] = useState(true);
@@ -16,7 +17,7 @@ export default function SplashScreen() {
       {isVisible && (
         <motion.div
           key="splash"
-          className="flex items-center justify-center h-screen bg-amber-50"
+          className={`flex items-center justify-center h-screen bg-${secondaryColor}`}
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.8 }}

@@ -1,12 +1,12 @@
-import React from "react";
+import { primaryColor, secondaryColor } from "@/constants/colors";
 
 function Button({ name, textSize }: { name: string, textSize : string }) {
   return (
     <div
       className={`px-10 h-16 text-${textSize} common-font rounded-4xl flex items-center 
       border-3 justify-center hover:cursor-pointer duration-500 shadow-xl 
-      hover:text-amber-50 hover:bg-amber-800 hover:border-amber-50 
-      hover:shadow-amber-500 text-amber-800 bg-amber-50 border-amber-800 shadow-amber-950`}
+      hover:text-${secondaryColor} hover:bg-${primaryColor} hover:border-${secondaryColor} 
+      hover:shadow-${secondaryColor}0 text-${primaryColor} bg-${secondaryColor} border-${primaryColor} shadow-amber-950`}
     >
       {name}
     </div>
