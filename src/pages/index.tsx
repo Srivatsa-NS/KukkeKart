@@ -82,7 +82,7 @@ function Index() {
           </p>
         </ScrollAnimation>
         <ScrollAnimation>
-          <ImageGrid bgColor={`bg-${primaryColor}`} gridItems={categories} />
+          <ImageGrid bgColor={`${primaryColor}`} gridItems={categories} />
         </ScrollAnimation>
       </div>
     </div>
