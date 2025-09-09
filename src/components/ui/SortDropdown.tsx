@@ -4,9 +4,10 @@ import { primaryColor } from "@/constants/colors";
 interface SortDropdownProps {
   onSortChange: (sortType: string) => void;
   selectedValue?: string;
+  isClearing?: boolean;
 }
 
-function SortDropdown({ onSortChange, selectedValue }: SortDropdownProps) {
+function SortDropdown({ onSortChange, selectedValue, isClearing }: SortDropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
   
   const getSelectedLabel = () => {
@@ -31,7 +32,7 @@ function SortDropdown({ onSortChange, selectedValue }: SortDropdownProps) {
     <div className="mb-6 relative">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className={`px-4 py-2 pr-8 w-48 border rounded-lg bg-amber-50 text-${primaryColor} border-${primaryColor} cursor-pointer relative`}
+        className={`px-4 py-2 pr-8 w-48 border rounded-lg bg-amber-50 text-${primaryColor} border-${primaryColor} cursor-pointer relative transition-all duration-700 ${isClearing ? 'animate-pulse scale-95 opacity-50' : ''}`}
       >
         {getSelectedLabel()}
         <span className={`absolute right-3 top-1/2 transform -translate-y-1/2 transition-transform duration-500 ${isOpen ? 'rotate-180' : ''}`}>
