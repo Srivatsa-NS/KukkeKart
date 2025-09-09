@@ -22,7 +22,7 @@ function ImageGrid({
   const oppositeColor = bgColor == primaryColor ? secondaryColor : primaryColor;
 
   return (
-    <div className="p-20">
+    <div className="px-20 pt-5 pb-20">
       <div className="grid grid-cols-3 gap-6">
         {gridItems.map((gridItem, index) => (
           <ScrollAnimation key={index}>
