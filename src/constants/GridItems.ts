@@ -243,14 +243,6 @@ export const allProducts = [
   
   // Other Spices
   {
-    name: "Star Anise and Buds",
-    image: otherSpices,
-    category: "Other Spices",
-    price: "₹180",
-    quantity: "50g",
-    description: "Premium star anise with buds"
-  },
-  {
     name: "Mace",
     image: otherSpices,
     category: "Other Spices",
