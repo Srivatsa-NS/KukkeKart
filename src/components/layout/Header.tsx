@@ -39,9 +39,10 @@ function Header() {
         className="flex"
       >
         {Object.entries(menuItems).map(([key, value]) => (
-          <MenuItem label={key} route={value} />
+          <MenuItem key={key} label={key} route={value} />
         ))}
         <MenuItem
+          key="cart"
           label={<FontAwesomeIcon icon={faShoppingCart} />}
           route="/cart"
         />

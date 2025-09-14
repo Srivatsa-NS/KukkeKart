@@ -25,7 +25,39 @@ function Cart() {
 
   const forceUpdate = () => {
     setCartItems(cartStore.getItems());
-    setUpdateTrigger(prev => prev + 1);
+    setUpdateTrigger((prev) => prev + 1);
+  };
+
+  const handleCheckout = () => {
+    const whatsappNumber = "+9138959463046";
+
+    let message = "🛒 *New Order from KukkeKart*\n\n";
+    message += "📋 *Order Details:*\n";
+
+    cartItems.forEach((item, index) => {
+      message += `${index + 1}. ${item.name}\n`;
+      message += `   Quantity: ${item.cartQuantity}x (${item.quantity})\n`;
+      message += `   Price: Rs.${item.price * item.cartQuantity}\n\n`;
+    });
+
+    message += `📊 *Order Summary:*\n`;
+    message += `Total Items: ${totalItems}\n`;
+    message += `Total Amount: Rs.${totalAmount}\n\n`;
+    message += "Thank you for choosing KukkeKart! 🙏";
+
+    // Detect if mobile device
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    
+    let whatsappUrl;
+    if (isMobile) {
+      // For mobile devices, use whatsapp:// protocol to open the app directly
+      whatsappUrl = `whatsapp://send?phone=${whatsappNumber}&text=${encodeURIComponent(message)}`;
+    } else {
+      // For desktop, use web.whatsapp.com
+      whatsappUrl = `https://web.whatsapp.com/send?phone=${whatsappNumber.replace("+", "")}&text=${encodeURIComponent(message)}`;
+    }
+
+    window.open(whatsappUrl, "_blank");
   };
 
   return (
@@ -106,7 +138,7 @@ function Cart() {
                     ₹{totalAmount}
                   </span>
                 </div>
-                <div className="w-full">
+                <div className="w-full" onClick={handleCheckout}>
                   <BrownButton name="Proceed to Checkout" textSize="4xl" />
                 </div>
               </div>
