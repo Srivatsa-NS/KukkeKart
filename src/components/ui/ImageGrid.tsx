@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import ScrollAnimation from "./ScrollAnimation";
+import QuantityControls from "./QuantityControls";
 import { primaryColor, secondaryColor } from "@/constants/colors";
 import { cartStore } from "@/store/cartStore";
 
@@ -66,35 +67,22 @@ function ImageGrid({
                   <div
                     className={`mt-4 flex items-center gap-3 px-4 py-2 border-2 rounded-xl bg-${oppositeColor} text-${bgColor} border-${bgColor}`}
                   >
-                    <button
-                      className={`w-10 h-10 rounded-xl border-2 bg-${bgColor} text-${oppositeColor} border-${oppositeColor} font-bold text-xl shadow-lg cursor-pointer`}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        cartStore.removeItem(gridItem.name);
-                        forceUpdate();
-                      }}
-                    >
-                      −
-                    </button>
-                    <span className="font-semibold text-xl min-w-[40px] text-center">
-                      {cartStore.getItemQuantity(gridItem.name)}
-                    </span>
-                    <button
-                      className={`w-10 h-10 rounded-xl border-2 bg-${bgColor} text-${oppositeColor} border-${oppositeColor} font-bold text-xl shadow-lg cursor-pointer`}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        cartStore.addItem({
+                    <div onClick={(e) => e.stopPropagation()}>
+                      <QuantityControls
+                        itemName={gridItem.name}
+                        bgColor={bgColor}
+                        textColor={bgColor}
+                        borderColor={oppositeColor}
+                        onUpdate={forceUpdate}
+                        item={{
                           name: gridItem.name,
                           price: gridItem.price || 0,
                           quantity: gridItem.quantity || "",
                           category: gridItem.category || "",
                           image: gridItem.image,
-                        });
-                        forceUpdate();
-                      }}
-                    >
-                      +
-                    </button>
+                        }}
+                      />
+                    </div>
                   </div>
                 ) : (
                   <div
