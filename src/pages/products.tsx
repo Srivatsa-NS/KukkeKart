@@ -59,13 +59,13 @@ function Products() {
 
   const handleClearAll = () => {
     setIsClearing(true);
-    
+
     setTimeout(() => {
       setCurrentFilter("");
       setCurrentSort("");
       setDisplayedProducts(allProducts);
       setGridKey((prev) => prev + 1);
-      
+
       setTimeout(() => {
         setIsClearing(false);
       }, 300);
@@ -82,15 +82,30 @@ function Products() {
 
       <div className="px-20 flex justify-between items-start mb-6">
         <div className="flex gap-4 items-start">
-          <FilterDropdown onFilterChange={handleFilterChange} selectedValue={currentFilter} isClearing={isClearing} />
-          <SortDropdown onSortChange={handleSortChange} selectedValue={currentSort} isClearing={isClearing} />
+          <FilterDropdown
+            onFilterChange={handleFilterChange}
+            selectedValue={currentFilter}
+            isClearing={isClearing}
+          />
+          <SortDropdown
+            onSortChange={handleSortChange}
+            selectedValue={currentSort}
+            isClearing={isClearing}
+          />
         </div>
         <button
           onClick={handleClearAll}
           disabled={isClearing}
-          className={`px-4 py-2 border rounded-lg bg-${secondaryColor} text-${primaryColor} border-${primaryColor} hover:bg-${primaryColor} hover:text-${secondaryColor} hover:border-${secondaryColor} transition-all duration-500 cursor-pointer ${isClearing ? 'animate-spin scale-110 bg-red-500 text-white border-red-500' : ''}`}
+          className={`px-4 py-2 border bg-${secondaryColor} text-${primaryColor} border-${primaryColor} 
+          hover:bg-${primaryColor} hover:text-${secondaryColor} hover:border-${secondaryColor} transition-all 
+          duration-500 cursor-pointer ${
+            isClearing
+              ? "animate-spin scale-110 bg-red-500 text-white border-red-500 rounded-full w-12 h-12 " +
+                "flex items-center justify-center px-0 py-0"
+              : "rounded-lg"
+          }`}
         >
-          {isClearing ? '✨' : 'Clear All'}
+          {isClearing ? "✨" : "Clear All"}
         </button>
       </div>
       <ImageGrid

@@ -64,6 +64,7 @@ export const allProducts = [
     category: "Dry Fruits",
     price: "₹700",
     quantity: "250g",
+    showAddToCart: true,
     description: "Premium quality cashews rich in nutrients"
   },
   {
@@ -72,6 +73,7 @@ export const allProducts = [
     category: "Dry Fruits",
     price: "₹600",
     quantity: "500g",
+    showAddToCart: true,
     description: "Fresh almonds perfect for snacking"
   },
   {
@@ -80,6 +82,7 @@ export const allProducts = [
     category: "Dry Fruits",
     price: "₹900",
     quantity: "200g",
+    showAddToCart: true,
     description: "Premium pistachios with rich flavor"
   },
   {
@@ -88,6 +91,7 @@ export const allProducts = [
     category: "Dry Fruits",
     price: "₹400",
     quantity: "15 pieces",
+    showAddToCart: true,
     description: "Sweet dried figs with natural goodness"
   },
   {
@@ -96,6 +100,7 @@ export const allProducts = [
     category: "Dry Fruits",
     price: "₹800",
     quantity: "12 pieces",
+    showAddToCart: true,
     description: "Brain-healthy walnuts with omega-3"
   },
   
@@ -106,6 +111,7 @@ export const allProducts = [
     category: "Fruits",
     price: "₹150",
     quantity: "4 pieces",
+    showAddToCart: true,
     description: "Fresh kiwi fruits rich in vitamin C"
   },
   {
@@ -114,6 +120,7 @@ export const allProducts = [
     category: "Fruits",
     price: "₹120",
     quantity: "500g",
+    showAddToCart: true,
     description: "Sweet and juicy grapes"
   },
   {
@@ -122,6 +129,7 @@ export const allProducts = [
     category: "Fruits",
     price: "₹140",
     quantity: "500g",
+    showAddToCart: true,
     description: "Premium black grapes with rich flavor"
   },
   {
@@ -130,6 +138,7 @@ export const allProducts = [
     category: "Fruits",
     price: "₹80",
     quantity: "250g",
+    showAddToCart: true,
     description: "Fresh amla rich in vitamin C"
   },
   
@@ -140,6 +149,7 @@ export const allProducts = [
     category: "Whole Spices",
     price: "₹120",
     quantity: "50g",
+    showAddToCart: true,
     description: "Premium quality cinnamon sticks"
   },
   {
@@ -148,6 +158,7 @@ export const allProducts = [
     category: "Whole Spices",
     price: "₹200",
     quantity: "25g",
+    showAddToCart: true,
     description: "Aromatic cloves perfect for spice blends"
   },
   {
@@ -156,6 +167,7 @@ export const allProducts = [
     category: "Whole Spices",
     price: "₹300",
     quantity: "50g",
+    showAddToCart: true,
     description: "Premium green cardamom pods"
   },
   {
@@ -164,6 +176,7 @@ export const allProducts = [
     category: "Whole Spices",
     price: "₹250",
     quantity: "25g",
+    showAddToCart: true,
     description: "Whole nutmeg with warm aromatic flavor"
   },
   {
@@ -172,6 +185,7 @@ export const allProducts = [
     category: "Whole Spices",
     price: "₹180",
     quantity: "100g",
+    showAddToCart: true,
     description: "Fresh black peppercorns with intense flavor"
   },
   {
@@ -180,6 +194,7 @@ export const allProducts = [
     category: "Whole Spices",
     price: "₹60",
     quantity: "200g",
+    showAddToCart: true,
     description: "Whole fenugreek seeds for tempering"
   },
   {
@@ -188,6 +203,7 @@ export const allProducts = [
     category: "Whole Spices",
     price: "₹60",
     quantity: "100g",
+    showAddToCart: true,
     description: "Pungent mustard seeds for tempering"
   },
   {
@@ -196,6 +212,7 @@ export const allProducts = [
     category: "Whole Spices",
     price: "₹150",
     quantity: "50g",
+    showAddToCart: true,
     description: "Hot and spicy bird's eye chilies"
   },
   {
@@ -204,6 +221,7 @@ export const allProducts = [
     category: "Whole Spices",
     price: "₹150",
     quantity: "8 pieces",
+    showAddToCart: true,
     description: "Star-shaped spice with sweet licorice flavor"
   },
   
@@ -214,6 +232,7 @@ export const allProducts = [
     category: "Seed Spices",
     price: "₹80",
     quantity: "250g",
+    showAddToCart: true,
     description: "Essential cumin seeds for Indian cooking"
   },
   {
@@ -222,6 +241,7 @@ export const allProducts = [
     category: "Seed Spices",
     price: "₹120",
     quantity: "100g",
+    showAddToCart: true,
     description: "White poppy seeds for gravies and desserts"
   },
   {
@@ -230,6 +250,7 @@ export const allProducts = [
     category: "Seed Spices",
     price: "₹100",
     quantity: "100g",
+    showAddToCart: true,
     description: "Ajwain seeds with digestive properties"
   },
   {
@@ -238,6 +259,7 @@ export const allProducts = [
     category: "Seed Spices",
     price: "₹90",
     quantity: "150g",
+    showAddToCart: true,
     description: "Sweet fennel seeds for digestive benefits"
   },
   
@@ -248,6 +270,7 @@ export const allProducts = [
     category: "Other Spices",
     price: "₹400",
     quantity: "25g",
+    showAddToCart: true,
     description: "Aromatic mace spice for rich flavor"
   },
   {
@@ -256,6 +279,7 @@ export const allProducts = [
     category: "Other Spices",
     price: "₹200",
     quantity: "50g",
+    showAddToCart: true,
     description: "Unique black stone flower for authentic taste"
   },
   
@@ -266,6 +290,7 @@ export const allProducts = [
     category: "Dairy & Sweeteners",
     price: "₹300",
     quantity: "500ml",
+    showAddToCart: true,
     description: "Pure natural honey"
   },
   {
@@ -274,6 +299,7 @@ export const allProducts = [
     category: "Dairy & Sweeteners",
     price: "₹500",
     quantity: "500ml",
+    showAddToCart: true,
     description: "Pure cow ghee made traditionally"
   }
 ]
