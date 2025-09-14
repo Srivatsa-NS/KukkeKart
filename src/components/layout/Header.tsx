@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import headerImage from "@/assets/icons/kukkekart_logo.jpeg";
 import MenuItem from "@/components/ui/MenuItem";
 import { secondaryColor } from "@/constants/colors";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 
 const container = {
   visible: {
@@ -39,6 +41,10 @@ function Header() {
         {Object.entries(menuItems).map(([key, value]) => (
           <MenuItem label={key} route={value} />
         ))}
+        <MenuItem
+          label={<FontAwesomeIcon icon={faShoppingCart} />}
+          route="/cart"
+        />
       </motion.div>
     </div>
   );

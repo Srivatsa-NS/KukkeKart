@@ -9,7 +9,7 @@ const item = {
   visible: { opacity: 1, y: 0 },
 };
 
-const MenuItem = ({ label, route }: { label: string; route: string }) => {
+const MenuItem = ({ label, route }: { label: string | React.ReactNode; route: string }) => {
   const [currentPage, setCurrentPage] = useRecoilState(currentPageState);
 
   return (
