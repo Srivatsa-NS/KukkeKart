@@ -28,18 +28,10 @@ function Products() {
         result.sort((a, b) => b.name.localeCompare(a.name));
         break;
       case "price-asc":
-        result.sort(
-          (a, b) =>
-            parseInt(a.price.replace("₹", "")) -
-            parseInt(b.price.replace("₹", ""))
-        );
+        result.sort((a, b) => a.price - b.price);
         break;
       case "price-desc":
-        result.sort(
-          (a, b) =>
-            parseInt(b.price.replace("₹", "")) -
-            parseInt(a.price.replace("₹", ""))
-        );
+        result.sort((a, b) => b.price - a.price);
         break;
     }
 

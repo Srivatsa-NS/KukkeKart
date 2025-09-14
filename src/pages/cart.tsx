@@ -11,14 +11,14 @@ function Cart() {
     setCartItems(cartStore.getItems());
   }, []);
 
-  const gridItems = cartItems.map(item => ({
+  const gridItems = cartItems.map((item) => ({
     name: item.name,
     image: item.image,
     price: item.price,
-    quantity: `${item.quantity} (x${item.cartQuantity})`,
+    quantity: `${item.quantity} x ${item.cartQuantity}`,
     category: item.category,
     description: `Quantity in cart: ${item.cartQuantity}`,
-    showAddToCart: false
+    showAddToCart: false,
   }));
 
   return (
@@ -28,12 +28,14 @@ function Cart() {
           <p className="common-font text-amber-50 text-6xl">Your Cart</p>
         </div>
       </ScrollAnimation>
-      
+
       {cartItems.length > 0 ? (
         <ImageGrid bgColor={primaryColor} gridItems={gridItems} />
       ) : (
         <div className="text-center py-20">
-          <p className="common-font text-amber-50 text-4xl">Your cart is empty</p>
+          <p className="common-font text-amber-50 text-4xl">
+            Your cart is empty
+          </p>
         </div>
       )}
     </div>

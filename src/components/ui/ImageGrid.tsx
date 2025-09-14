@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Image from "next/image";
 import ScrollAnimation from "./ScrollAnimation";
 import { primaryColor, secondaryColor } from "@/constants/colors";
@@ -7,7 +8,7 @@ interface ImageGridItem {
   image: any;
   name: string;
   route?: string;
-  price?: string;
+  price?: number;
   description?: string;
   category?: string;
   quantity?: string;
@@ -21,7 +22,13 @@ function ImageGrid({
   bgColor: string;
   gridItems: ImageGridItem[];
 }) {
+  const [cartUpdate, setCartUpdate] = useState(0);
   const oppositeColor = bgColor == primaryColor ? secondaryColor : primaryColor;
+
+  const forceUpdate = () => {
+    setCartUpdate((prev) => prev + 1);
+    console.log(cartStore.getItems());
+  };
 
   return (
     <div className="px-20 pt-5 pb-20">
@@ -51,33 +58,65 @@ function ImageGrid({
               </div>
               {gridItem.price && (
                 <p className="text-3xl text-center font-bold mt-2">
-                  {gridItem.price}
+                  {`₹${gridItem.price}`}
                 </p>
               )}
-              {gridItem.showAddToCart && (
-                <button
-                  className={`mt-4 px-6 py-2 border-2 rounded-xl bg-${oppositeColor} text-${bgColor} border-${bgColor} 
-                  transition-all duration-300 font-semibold cursor-pointer`}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    cartStore.addItem({
-                      name: gridItem.name,
-                      price: gridItem.price || "",
-                      quantity: gridItem.quantity || "",
-                      category: gridItem.category || "",
-                      image: gridItem.image,
-                    });
-                    console.log(
-                      "Added to cart:",
-                      gridItem.name,
-                      "Total items:",
-                      cartStore.getItems()
-                    );
-                  }}
-                >
-                  Add to Cart
-                </button>
-              )}
+              {gridItem.showAddToCart &&
+                (cartStore.getItemQuantity(gridItem.name) > 0 ? (
+                  <div
+                    className={`mt-4 flex items-center gap-3 px-4 py-2 border-2 rounded-xl bg-${oppositeColor} text-${bgColor} border-${bgColor}`}
+                  >
+                    <button
+                      className={`w-10 h-10 rounded-xl border-2 bg-${bgColor} text-${oppositeColor} border-${oppositeColor} font-bold text-xl shadow-lg cursor-pointer`}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        cartStore.removeItem(gridItem.name);
+                        forceUpdate();
+                      }}
+                    >
+                      −
+                    </button>
+                    <span className="font-semibold text-xl min-w-[40px] text-center">
+                      {cartStore.getItemQuantity(gridItem.name)}
+                    </span>
+                    <button
+                      className={`w-10 h-10 rounded-xl border-2 bg-${bgColor} text-${oppositeColor} border-${oppositeColor} font-bold text-xl shadow-lg cursor-pointer`}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        cartStore.addItem({
+                          name: gridItem.name,
+                          price: gridItem.price || 0,
+                          quantity: gridItem.quantity || "",
+                          category: gridItem.category || "",
+                          image: gridItem.image,
+                        });
+                        forceUpdate();
+                      }}
+                    >
+                      +
+                    </button>
+                  </div>
+                ) : (
+                  <div
+                    className={`mt-4 flex items-center justify-center px-4 py-3 border-2 rounded-xl 
+                    bg-${oppositeColor} text-${bgColor} border-${bgColor} h-15 cursor-pointer`}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      cartStore.addItem({
+                        name: gridItem.name,
+                        price: gridItem.price || 0,
+                        quantity: gridItem.quantity || "",
+                        category: gridItem.category || "",
+                        image: gridItem.image,
+                      });
+                      forceUpdate();
+                    }}
+                  >
+                    <button className="font-semibold cursor-pointer text-xl">
+                      Add to Cart
+                    </button>
+                  </div>
+                ))}
             </div>
           </ScrollAnimation>
         ))}

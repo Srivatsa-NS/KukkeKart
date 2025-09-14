@@ -62,7 +62,7 @@ export const allProducts = [
     name: "Cashew",
     image: cashew,
     category: "Dry Fruits",
-    price: "₹700",
+    price: 700,
     quantity: "250g",
     showAddToCart: true,
     description: "Premium quality cashews rich in nutrients"
@@ -71,7 +71,7 @@ export const allProducts = [
     name: "Almond",
     image: almond,
     category: "Dry Fruits",
-    price: "₹600",
+    price: 600,
     quantity: "500g",
     showAddToCart: true,
     description: "Fresh almonds perfect for snacking"
@@ -80,7 +80,7 @@ export const allProducts = [
     name: "Pistachio",
     image: pista,
     category: "Dry Fruits",
-    price: "₹900",
+    price: 900,
     quantity: "200g",
     showAddToCart: true,
     description: "Premium pistachios with rich flavor"
@@ -89,7 +89,7 @@ export const allProducts = [
     name: "Fig",
     image: fig,
     category: "Dry Fruits",
-    price: "₹400",
+    price: 400,
     quantity: "15 pieces",
     showAddToCart: true,
     description: "Sweet dried figs with natural goodness"
@@ -98,7 +98,7 @@ export const allProducts = [
     name: "Walnut",
     image: walnut,
     category: "Dry Fruits",
-    price: "₹800",
+    price: 800,
     quantity: "12 pieces",
     showAddToCart: true,
     description: "Brain-healthy walnuts with omega-3"
@@ -109,7 +109,7 @@ export const allProducts = [
     name: "Kiwi",
     image: kiwi,
     category: "Fruits",
-    price: "₹150",
+    price: 150,
     quantity: "4 pieces",
     showAddToCart: true,
     description: "Fresh kiwi fruits rich in vitamin C"
@@ -118,7 +118,7 @@ export const allProducts = [
     name: "Grapes",
     image: grapes,
     category: "Fruits",
-    price: "₹120",
+    price: 120,
     quantity: "500g",
     showAddToCart: true,
     description: "Sweet and juicy grapes"
@@ -127,7 +127,7 @@ export const allProducts = [
     name: "Black Grapes",
     image: blackGrapes,
     category: "Fruits",
-    price: "₹140",
+    price: 140,
     quantity: "500g",
     showAddToCart: true,
     description: "Premium black grapes with rich flavor"
@@ -136,7 +136,7 @@ export const allProducts = [
     name: "Indian Gooseberry",
     image: amla,
     category: "Fruits",
-    price: "₹80",
+    price: 80,
     quantity: "250g",
     showAddToCart: true,
     description: "Fresh amla rich in vitamin C"
@@ -147,7 +147,7 @@ export const allProducts = [
     name: "Cinnamon",
     image: cinnamon,
     category: "Whole Spices",
-    price: "₹120",
+    price: 120,
     quantity: "50g",
     showAddToCart: true,
     description: "Premium quality cinnamon sticks"
@@ -156,7 +156,7 @@ export const allProducts = [
     name: "Clove",
     image: clove,
     category: "Whole Spices",
-    price: "₹200",
+    price: 200,
     quantity: "25g",
     showAddToCart: true,
     description: "Aromatic cloves perfect for spice blends"
@@ -165,7 +165,7 @@ export const allProducts = [
     name: "Cardamom",
     image: cardamom,
     category: "Whole Spices",
-    price: "₹300",
+    price: 300,
     quantity: "50g",
     showAddToCart: true,
     description: "Premium green cardamom pods"
@@ -174,7 +174,7 @@ export const allProducts = [
     name: "Nutmeg",
     image: nutmeg,
     category: "Whole Spices",
-    price: "₹250",
+    price: 250,
     quantity: "25g",
     showAddToCart: true,
     description: "Whole nutmeg with warm aromatic flavor"
@@ -183,7 +183,7 @@ export const allProducts = [
     name: "Black Pepper",
     image: wholeSpices,
     category: "Whole Spices",
-    price: "₹180",
+    price: 180,
     quantity: "100g",
     showAddToCart: true,
     description: "Fresh black peppercorns with intense flavor"
@@ -192,7 +192,7 @@ export const allProducts = [
     name: "Fenugreek",
     image: fenugreek,
     category: "Whole Spices",
-    price: "₹60",
+    price: 60,
     quantity: "200g",
     showAddToCart: true,
     description: "Whole fenugreek seeds for tempering"
@@ -201,7 +201,7 @@ export const allProducts = [
     name: "Mustard Seeds",
     image: wholeSpices,
     category: "Whole Spices",
-    price: "₹60",
+    price: 60,
     quantity: "100g",
     showAddToCart: true,
     description: "Pungent mustard seeds for tempering"
@@ -210,7 +210,7 @@ export const allProducts = [
     name: "Bird's Eye Chili",
     image: wholeSpices,
     category: "Whole Spices",
-    price: "₹150",
+    price: 150,
     quantity: "50g",
     showAddToCart: true,
     description: "Hot and spicy bird's eye chilies"
@@ -219,7 +219,7 @@ export const allProducts = [
     name: "Star Anise",
     image: starAnise,
     category: "Whole Spices",
-    price: "₹150",
+    price: 150,
     quantity: "8 pieces",
     showAddToCart: true,
     description: "Star-shaped spice with sweet licorice flavor"
@@ -230,7 +230,7 @@ export const allProducts = [
     name: "Cumin",
     image: seedSpices,
     category: "Seed Spices",
-    price: "₹80",
+    price: 80,
     quantity: "250g",
     showAddToCart: true,
     description: "Essential cumin seeds for Indian cooking"
@@ -239,7 +239,7 @@ export const allProducts = [
     name: "Poppy Seeds",
     image: seedSpices,
     category: "Seed Spices",
-    price: "₹120",
+    price: 120,
     quantity: "100g",
     showAddToCart: true,
     description: "White poppy seeds for gravies and desserts"
@@ -248,7 +248,7 @@ export const allProducts = [
     name: "Carom Seeds",
     image: seedSpices,
     category: "Seed Spices",
-    price: "₹100",
+    price: 100,
     quantity: "100g",
     showAddToCart: true,
     description: "Ajwain seeds with digestive properties"
@@ -257,7 +257,7 @@ export const allProducts = [
     name: "Fennel Seeds",
     image: fennel,
     category: "Seed Spices",
-    price: "₹90",
+    price: 90,
     quantity: "150g",
     showAddToCart: true,
     description: "Sweet fennel seeds for digestive benefits"
@@ -268,7 +268,7 @@ export const allProducts = [
     name: "Mace",
     image: otherSpices,
     category: "Other Spices",
-    price: "₹400",
+    price: 400,
     quantity: "25g",
     showAddToCart: true,
     description: "Aromatic mace spice for rich flavor"
@@ -277,7 +277,7 @@ export const allProducts = [
     name: "Black Stone Flower",
     image: otherSpices,
     category: "Other Spices",
-    price: "₹200",
+    price: 200,
     quantity: "50g",
     showAddToCart: true,
     description: "Unique black stone flower for authentic taste"
@@ -288,7 +288,7 @@ export const allProducts = [
     name: "Honey",
     image: dairyProducts,
     category: "Dairy & Sweeteners",
-    price: "₹300",
+    price: 300,
     quantity: "500ml",
     showAddToCart: true,
     description: "Pure natural honey"
@@ -297,7 +297,7 @@ export const allProducts = [
     name: "Cow Ghee",
     image: dairyProducts,
     category: "Dairy & Sweeteners",
-    price: "₹500",
+    price: 500,
     quantity: "500ml",
     showAddToCart: true,
     description: "Pure cow ghee made traditionally"
