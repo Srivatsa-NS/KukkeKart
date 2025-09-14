@@ -8,10 +8,11 @@ import { primaryColor, secondaryColor } from "@/constants/colors";
 
 function Cart() {
   const [cartItems, setCartItems] = useState(cartStore.getItems());
+  const [updateTrigger, setUpdateTrigger] = useState(0);
 
   useEffect(() => {
     setCartItems(cartStore.getItems());
-  }, []);
+  }, [updateTrigger]);
 
   const totalAmount = cartItems.reduce(
     (total, item) => total + item.price * item.cartQuantity,
@@ -22,7 +23,10 @@ function Cart() {
     0
   );
 
-  const forceUpdate = () => setCartItems(cartStore.getItems());
+  const forceUpdate = () => {
+    setCartItems(cartStore.getItems());
+    setUpdateTrigger(prev => prev + 1);
+  };
 
   return (
     <div className={`bg-${primaryColor} min-h-screen`}>
