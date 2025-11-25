@@ -1,1 +1,16 @@
+---
+deployment:
+  tasks:
+    # 1. INSTALL: Downloads all dependencies (the 'npm i' step)
+    - /opt/cpanel/ea-nodejs16/bin/npm install
+    
+    # 2. BUILD: Compiles the Next.js source code into static files
+    - /opt/cpanel/ea-nodejs16/bin/npm run build
+    # Add the export step if your Next.js project uses it for static output
+    # - /opt/cpanel/ea-nodejs16/bin/npm run export 
 
+    # 3. SET PATH: Define the live directory
+    - export DEPLOYPATH=/home/siqavv4iwfy4/public_html/
+    
+    # 4. DEPLOY: Copy the static output (from the 'out' folder) to the live path
+    - /bin/cp -R out/* $DEPLOYPATH
