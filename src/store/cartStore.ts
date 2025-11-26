@@ -3,7 +3,7 @@ interface CartItem {
   price: number;
   quantity: string;
   category: string;
-  image: any;
+  image: string | import('next/image').StaticImageData;
   cartQuantity: number;
 }
 

@@ -12,7 +12,7 @@ interface QuantityControlsProps {
     price: number;
     quantity: string;
     category: string;
-    image: any;
+    image: string | import('next/image').StaticImageData;
   };
 }
 

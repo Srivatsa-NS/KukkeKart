@@ -26,7 +26,7 @@ function FilterDropdown({ onFilterChange, selectedValue, isClearing }: FilterDro
     { value: "Dairy & Sweeteners", label: "Dairy & Sweeteners" }
   ];
 
-  const handleSelect = (value: string, label: string) => {
+  const handleSelect = (value: string) => {
     setIsOpen(false);
     onFilterChange(value);
   };
@@ -47,7 +47,7 @@ function FilterDropdown({ onFilterChange, selectedValue, isClearing }: FilterDro
         {categories.map((category) => (
           <button
             key={category.value}
-            onClick={() => handleSelect(category.value, category.label)}
+            onClick={() => handleSelect(category.value)}
             className={`w-full px-4 py-2 text-left hover:bg-${primaryColor} hover:text-amber-50 transition-colors duration-200`}
           >
             {category.label}

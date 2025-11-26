@@ -3,10 +3,10 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import BrownButton from "./BrownButton";
 import ScrollAnimation from "./ScrollAnimation";
-import { primaryColor, secondaryColor } from "@/constants/colors";
+import { primaryColor } from "@/constants/colors";
 
 interface Slide {
-  image: any;
+  image: string | import('next/image').StaticImageData;
   alt: string;
   description: string;
   buy: boolean;

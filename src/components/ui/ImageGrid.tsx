@@ -6,7 +6,7 @@ import { primaryColor, secondaryColor } from "@/constants/colors";
 import { cartStore } from "@/store/cartStore";
 
 interface ImageGridItem {
-  image: any;
+  image: string | import('next/image').StaticImageData;
   name: string;
   route?: string;
   price?: number;
@@ -23,7 +23,7 @@ function ImageGrid({
   bgColor: string;
   gridItems: ImageGridItem[];
 }) {
-  const [cartUpdate, setCartUpdate] = useState(0);
+  const [, setCartUpdate] = useState(0);
   const oppositeColor = bgColor == primaryColor ? secondaryColor : primaryColor;
 
   const forceUpdate = () => {

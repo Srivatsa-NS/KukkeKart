@@ -5,7 +5,7 @@ import ArrowButton from "./ArrowButton";
 import { primaryColor, secondaryColor } from "@/constants/colors";
 
 interface GridCarouselItem {
-  image: any;
+  image: string | import('next/image').StaticImageData;
   name: string;
   alt: string;
 }

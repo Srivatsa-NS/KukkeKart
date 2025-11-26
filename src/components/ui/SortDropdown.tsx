@@ -23,7 +23,7 @@ function SortDropdown({ onSortChange, selectedValue, isClearing }: SortDropdownP
     { value: "price-desc", label: "Price (High to Low)" }
   ];
 
-  const handleSelect = (value: string, label: string) => {
+  const handleSelect = (value: string) => {
     setIsOpen(false);
     onSortChange(value);
   };
@@ -44,7 +44,7 @@ function SortDropdown({ onSortChange, selectedValue, isClearing }: SortDropdownP
         {options.map((option) => (
           <button
             key={option.value}
-            onClick={() => handleSelect(option.value, option.label)}
+            onClick={() => handleSelect(option.value)}
             className={`w-full px-4 py-2 text-left hover:bg-${primaryColor} hover:text-amber-50 transition-colors duration-200`}
           >
             {option.label}
