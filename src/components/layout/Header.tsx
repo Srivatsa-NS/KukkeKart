@@ -31,6 +31,7 @@ function Header() {
         width={100}
         height={100}
         className="m-5 rounded-full shadow-2xl shadow-black hover:cursor-pointer"
+        priority
       />
       <motion.div
         variants={container}
