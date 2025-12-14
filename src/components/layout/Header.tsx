@@ -2,9 +2,14 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import headerImage from "@/assets/optimized/kukkekart_logo.webp";
 import MenuItem from "@/components/ui/MenuItem";
-import { secondaryColor } from "@/constants/colors";
+import { secondaryColor, primaryColor } from "@/constants/colors";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import {
+  faShoppingCart,
+  faBars,
+  faTimes,
+} from "@fortawesome/free-solid-svg-icons";
+import { useState } from "react";
 
 const container = {
   visible: {
@@ -23,21 +28,25 @@ const menuItems = {
 };
 
 function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
-    <div className={`bg-${secondaryColor} flex items-center justify-between`}>
+    <div
+      className={`bg-${secondaryColor} flex items-center justify-between relative py-1 sm:py-0`}
+    >
       <Image
         src={headerImage}
         alt="Logo"
         width={100}
         height={100}
-        className="m-5 rounded-full shadow-2xl shadow-black hover:cursor-pointer"
+        className="m-5 rounded-full shadow-2xl shadow-black hover:cursor-pointer w-16 h-16 md:w-24 md:h-24"
         priority
       />
       <motion.div
         variants={container}
         initial="hidden"
         animate="visible"
-        className="flex"
+        className="hidden lg:flex"
       >
         {Object.entries(menuItems).map(([key, value]) => (
           <MenuItem key={key} label={key} route={value} />
@@ -48,6 +57,34 @@ function Header() {
           route="/cart"
         />
       </motion.div>
+      <button
+        className={`lg:hidden m-5 text-3xl text-${primaryColor}`}
+        onClick={() => setIsMenuOpen(!isMenuOpen)}
+      >
+        <FontAwesomeIcon icon={isMenuOpen ? faTimes : faBars} />
+      </button>
+      {isMenuOpen && (
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className={`absolute top-full left-0 w-full bg-${secondaryColor} flex flex-col lg:hidden shadow-lg z-50`}
+        >
+          {Object.entries(menuItems).map(([key, value]) => (
+            <MenuItem
+              key={key}
+              label={key}
+              route={value}
+              onClick={() => setIsMenuOpen(false)}
+            />
+          ))}
+          <MenuItem
+            key="cart"
+            label={<FontAwesomeIcon icon={faShoppingCart} />}
+            route="/cart"
+            onClick={() => setIsMenuOpen(false)}
+          />
+        </motion.div>
+      )}
     </div>
   );
 }

@@ -9,7 +9,7 @@ const item = {
   visible: { opacity: 1, y: 0 },
 };
 
-const MenuItem = ({ label, route }: { label: string | React.ReactNode; route: string }) => {
+const MenuItem = ({ label, route, onClick }: { label: string | React.ReactNode; route: string; onClick?: () => void }) => {
   const [currentPage, setCurrentPage] = useRecoilState(currentPageState);
 
   return (
@@ -27,6 +27,7 @@ const MenuItem = ({ label, route }: { label: string | React.ReactNode; route: st
         }}
         onClick={() => {
           setCurrentPage(route);
+          onClick?.();
         }}
         className="mx-4 px-5 rounded-2xl menu-item common-font hover:cursor-pointer"
       >
