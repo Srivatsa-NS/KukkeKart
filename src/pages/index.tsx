@@ -10,30 +10,46 @@ import Carousel from "@/components/ui/Carousel";
 import ScrollAnimation from "@/components/ui/ScrollAnimation";
 import ArrowButton from "@/components/ui/ArrowButton";
 import ImageGrid from "@/components/ui/ImageGrid";
+import { useEffect, useState } from "react";
 
 import { primaryColor, secondaryColor } from "@/constants/colors";
 
 function Index() {
   const controls = useAnimation();
   const setCurrentPage = useSetRecoilState(currentPageState);
+  const [xValue, setXValue] = useState(0);
+
+  useEffect(() => {
+    const updateXValue = () => {
+      if (window.innerWidth > 1024) setXValue(-300);
+      else if (window.innerWidth >= 768) setXValue(-240);
+      else setXValue(0);
+    };
+    updateXValue();
+    window.addEventListener("resize", updateXValue);
+    return () => window.removeEventListener("resize", updateXValue);
+  }, []);
 
   return (
     <div className={`bg-${secondaryColor}`}>
       <div className={`bg-${primaryColor} p-3`}>
-        <div className="flex justify-center items-center relative">
+        <div className="flex flex-col lg:flex-row justify-center items-center relative">
           <motion.div
-            className="p-20"
-            style={{ width: "60%", height: "60%" }}
+            className="p-4 md:p-10 lg:p-20 w-full lg:w-3/5"
             initial={{ x: 0, opacity: 0 }}
-            animate={{ x: [0, 0, -300], opacity: [0, 1, 1] }}
+            animate={{ x: [0, 0, xValue], opacity: [0, 1, 1] }}
             transition={{ duration: 1.5, times: [0, 0.5, 1] }}
             onAnimationComplete={() => controls.start("visible")}
           >
-            <Image src={heroImage} alt="hero-img" className="rounded-4xl" />
+            <Image
+              src={heroImage}
+              alt="hero-img"
+              className="rounded-4xl w-full"
+            />
           </motion.div>
 
           <motion.div
-            className="absolute right-20 flex-col justify-items-end"
+            className="static lg:absolute lg:right-20 flex-col justify-items-end mt-4 lg:mt-0 px-4 lg:px-0"
             initial={{ opacity: 0, y: 20 }}
             animate={controls}
             variants={{
@@ -42,22 +58,22 @@ function Index() {
             transition={{ duration: 1 }}
           >
             <p
-              className={`p-8 bg-${secondaryColor} text-4xl rounded-4xl text-${primaryColor} common-font`}
+              className={`p-4 md:p-6 lg:p-8 bg-${secondaryColor} text-lg md:text-2xl lg:text-4xl rounded-4xl text-${primaryColor} common-font`}
             >
               KukkeKart:
               <br />
               Your destination for authentic,
-              <br />
+              <br className="hidden md:block" />
               homemade spices that transform every dish.
             </p>
             <div
-              className="my-10"
+              className="my-6 lg:my-10"
               onClick={() => {
                 setCurrentPage("/products");
               }}
             >
               <Link href={"/products"}>
-                <ArrowButton name="Explore Collections" textSize="2xl" />
+                <ArrowButton name="Explore Collections" textSize="xl lg:2xl" />
               </Link>
             </div>
           </motion.div>
