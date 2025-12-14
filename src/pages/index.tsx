@@ -1,4 +1,4 @@
-import heroImage from "@/assets/images/hero-image.jpg";
+import heroImage from "@/assets/optimized/hero-image.webp";
 import { bestSellers } from "@/constants/carouselSlides";
 import { categories } from "@/constants/GridItems";
 import Image from "next/image";

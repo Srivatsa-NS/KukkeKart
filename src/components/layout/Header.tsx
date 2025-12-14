@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
-import headerImage from "@/assets/icons/kukkekart_logo.jpeg";
+import headerImage from "@/assets/optimized/kukkekart_logo.webp";
 import MenuItem from "@/components/ui/MenuItem";
 import { secondaryColor } from "@/constants/colors";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

@@ -1,5 +1,3 @@
-import { primaryColor, secondaryColor } from "@/constants/colors";
-
 function ArrowButton({ name, textSize }: { name: string; textSize: string }) {
   return (
     <div className="flex group cursor-pointer">

@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import logo from "@/assets/icons/kukkekart_intro.jpeg";
+import logo from "@/assets/optimized/kukkekart_intro.webp";
 import { secondaryColor } from "@/constants/colors";
 
 export default function SplashScreen() {

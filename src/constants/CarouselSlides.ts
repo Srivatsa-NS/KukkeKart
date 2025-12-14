@@ -1,13 +1,13 @@
-import cinnamonCarousel from "@/assets/products/cinnamon-carousel.jpg";
-import clovesCarousel from "@/assets/products/cloves-carousel.jpg";
-import cashewCarousel from "@/assets/products/cashew-carousel.jpg";
-import blackPepperCarousel from "@/assets/products/black-peppers-carousel.jpg";
-import amla from "@/assets/products/amla.jpg";
-import fenugreek from "@/assets/products/fenugreek.jpg";
-import fennel from "@/assets/products/fennel.jpg";
-import nutmeg from "@/assets/products/nutmeg.jpg";
-import starAnise from "@/assets/products/star-anise.jpg";
-import cardamom from "@/assets/products/cardamom.jpg";
+import cinnamonCarousel from "@/assets/optimized/cinnamon-carousel.webp";
+import clovesCarousel from "@/assets/optimized/cloves-carousel.webp";
+import cashewCarousel from "@/assets/optimized/cashew-carousel.webp";
+import blackPepperCarousel from "@/assets/optimized/black-peppers-carousel.webp";
+import amla from "@/assets/optimized/amla.webp";
+import fenugreek from "@/assets/optimized/fenugreek.webp";
+import fennel from "@/assets/optimized/fennel.webp";
+import nutmeg from "@/assets/optimized/nutmeg.webp";
+import starAnise from "@/assets/optimized/star-anise.webp";
+import cardamom from "@/assets/optimized/cardamom.webp";
 
 export const bestSellers = [
   {
