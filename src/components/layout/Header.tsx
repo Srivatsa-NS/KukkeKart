@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import headerImage from "@/assets/optimized/kukkekart_logo.webp";
 import MenuItem from "@/components/ui/MenuItem";
 import { secondaryColor, primaryColor } from "@/constants/colors";
@@ -63,28 +63,37 @@ function Header() {
       >
         <FontAwesomeIcon icon={isMenuOpen ? faTimes : faBars} />
       </button>
-      {isMenuOpen && (
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className={`absolute top-full left-0 w-full bg-${secondaryColor} flex flex-col lg:hidden shadow-lg z-50`}
-        >
-          {Object.entries(menuItems).map(([key, value]) => (
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, x: "100%" }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: "100%" }}
+            className={`fixed top-0 left-0 w-full h-full bg-${secondaryColor} flex flex-col items-end justify-center lg:hidden shadow-lg z-50`}
+          >
+            <button
+              className={`absolute top-10 right-5 text-3xl text-${primaryColor}`}
+              onClick={() => setIsMenuOpen(false)}
+            >
+              <FontAwesomeIcon icon={faTimes} />
+            </button>
+            {Object.entries(menuItems).map(([key, value]) => (
+              <MenuItem
+                key={key}
+                label={key}
+                route={value}
+                onClick={() => setIsMenuOpen(false)}
+              />
+            ))}
             <MenuItem
-              key={key}
-              label={key}
-              route={value}
+              key="cart"
+              label={<FontAwesomeIcon icon={faShoppingCart} />}
+              route="/cart"
               onClick={() => setIsMenuOpen(false)}
             />
-          ))}
-          <MenuItem
-            key="cart"
-            label={<FontAwesomeIcon icon={faShoppingCart} />}
-            route="/cart"
-            onClick={() => setIsMenuOpen(false)}
-          />
-        </motion.div>
-      )}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
