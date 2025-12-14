@@ -58,7 +58,7 @@ function GridCarousel({ items }: GridCarouselProps) {
           className="flex flex-col justify-center items-center flex-shrink-0"
           style={{ width: "calc(25% - 1.5rem)" }}
         >
-          <ArrowButton name="View All" textSize="3xl" />
+          <ArrowButton name="View All" textSize="text-3xl" />
         </div>
       </motion.div>
 

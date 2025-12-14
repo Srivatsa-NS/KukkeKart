@@ -21,8 +21,7 @@ function Index() {
 
   useEffect(() => {
     const updateXValue = () => {
-      if (window.innerWidth > 1024) setXValue(-300);
-      else if (window.innerWidth >= 768) setXValue(-240);
+      if (window.innerWidth >= 1280) setXValue(-300);
       else setXValue(0);
     };
     updateXValue();
@@ -33,9 +32,9 @@ function Index() {
   return (
     <div className={`bg-${secondaryColor}`}>
       <div className={`bg-${primaryColor} p-3`}>
-        <div className="flex flex-col lg:flex-row justify-center items-center relative">
+        <div className="flex flex-col xl:flex-row justify-center items-center relative">
           <motion.div
-            className="p-4 md:p-10 lg:p-20 w-full lg:w-3/5"
+            className="p-4 md:p-10 xl:p-20 w-full lg:w-4/5 xl:w-3/5"
             initial={{ x: 0, opacity: 0 }}
             animate={{ x: [0, 0, xValue], opacity: [0, 1, 1] }}
             transition={{ duration: 1.5, times: [0, 0.5, 1] }}
@@ -49,7 +48,7 @@ function Index() {
           </motion.div>
 
           <motion.div
-            className="static lg:absolute lg:right-20 flex-col justify-items-end mt-4 lg:mt-0 px-4 lg:px-0"
+            className="static xl:absolute xl:right-20 flex-col justify-items-end mt-4 xl:mt-0 px-4 xl:px-0"
             initial={{ opacity: 0, y: 20 }}
             animate={controls}
             variants={{
@@ -58,7 +57,7 @@ function Index() {
             transition={{ duration: 1 }}
           >
             <p
-              className={`p-4 md:p-6 lg:p-8 bg-${secondaryColor} text-lg md:text-2xl lg:text-4xl rounded-4xl text-${primaryColor} common-font`}
+              className={`p-4 md:p-6 xl:p-8 mx-10 md:mx-0 bg-${secondaryColor} text-base md:text-2xl lg:text-2xl xl:text-4xl rounded-4xl text-${primaryColor} common-font`}
             >
               KukkeKart:
               <br />
@@ -67,13 +66,13 @@ function Index() {
               homemade spices that transform every dish.
             </p>
             <div
-              className="my-6 lg:my-10"
+              className="my-6 xl:my-10"
               onClick={() => {
                 setCurrentPage("/products");
               }}
             >
               <Link href={"/products"}>
-                <ArrowButton name="Explore Collections" textSize="xl lg:2xl" />
+                <ArrowButton name="Explore Collections" textSize="text-xs sm:text-xs md:text-base xl:text-2xl" />
               </Link>
             </div>
           </motion.div>
