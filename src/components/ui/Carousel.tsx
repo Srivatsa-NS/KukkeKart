@@ -4,6 +4,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import BrownButton from "./BrownButton";
 import ScrollAnimation from "./ScrollAnimation";
 import { primaryColor } from "@/constants/colors";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
 interface Slide {
   image: string | import('next/image').StaticImageData;
@@ -37,12 +39,12 @@ function Carousel({ slides }: CarouselProps) {
         {slides.map((slide, index) => (
           <div
             key={index}
-            className="w-full px-96 pb-20 flex-shrink-0 flex flex-col items-center"
+            className="w-full px-4 md:px-20 lg:px-40 xl:px-96 pb-10 md:pb-20 flex-shrink-0 flex flex-col items-center"
           >
             <Image
               src={slide.image}
               alt={slide.alt}
-              className="rounded-4xl shadow-2xl shadow-amber-950"
+              className="rounded-4xl shadow-2xl shadow-amber-950 w-60 sm:w-72 md:w-96 lg:w-auto"
               loading="lazy"
               placeholder="blur"
               blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
@@ -57,7 +59,7 @@ function Carousel({ slides }: CarouselProps) {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
                     transition={{ delay: 0.5, duration: 0.6, ease: "easeOut" }}
-                    className="mt-6 text-4xl font-medium text-amber-900 common-font"
+                    className="mt-6 text-lg md:text-2xl lg:text-4xl font-medium text-amber-900 common-font text-center"
                   >
                     {slide.description}
                   </motion.p>
@@ -66,8 +68,8 @@ function Carousel({ slides }: CarouselProps) {
             </ScrollAnimation>
             <ScrollAnimation>
               {slide.buy && (
-                <div className="mt-7">
-                  <BrownButton name="Add to Cart" textSize="2xl"/>
+                <div className="mt-3 sm:mt-7">
+                  <BrownButton name="Add to Cart" textSize="text-xs sm:text-base md:text-xl lg:text-2xl xl:text-3xl"/>
                 </div>
               )}
             </ScrollAnimation>
@@ -76,18 +78,23 @@ function Carousel({ slides }: CarouselProps) {
       </motion.div>
 
       <div
-        className="absolute left-10 top-1/3 -translate-y-1/2"
+        className="absolute left-2 sm:left-0 md:left-10 top-1/4 sm:top-1/3 -translate-y-1/2"
         onClick={prevSlide}
       >
-        <BrownButton name="<" textSize="4xl"/>
+        <div className="block sm:hidden">
+          <FontAwesomeIcon icon={faChevronLeft} className={`text-2xl text-${primaryColor}`} />
+        </div>
+        <div className="hidden sm:block scale-50 md:scale-100">
+          <BrownButton name="<" textSize="text-xl md:text-2xl lg:text-4xl"/>
+        </div>
       </div>
 
-      <div className="absolute mb-5 bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-3">
+      <div className="absolute mb-5 bottom-0 sm:bottom-12 md:bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-1 sm:gap-3">
         {slides.map((_, i) => (
           <button
             key={i}
             onClick={() => setCurrent(i)}
-            className={`w-4 h-4 rounded-full hover:cursor-pointer ${
+            className={`w-2 h-2 md:w-4 md:h-4 rounded-full hover:cursor-pointer ${
               current === i ? "bg-amber-950" : `bg-${primaryColor}`
             }`}
           />
@@ -95,10 +102,15 @@ function Carousel({ slides }: CarouselProps) {
       </div>
 
       <div
-        className="absolute right-10 top-1/3 -translate-y-1/2"
+        className="absolute right-2 sm:right-0 md:right-10 top-1/4 sm:top-1/3 -translate-y-1/2"
         onClick={nextSlide}
       >
-        <BrownButton name=">" textSize="4xl"/>
+        <div className="block sm:hidden">
+          <FontAwesomeIcon icon={faChevronRight} className={`text-2xl text-${primaryColor}`} />
+        </div>
+        <div className="hidden sm:block scale-50 md:scale-100">
+          <BrownButton name=">" textSize="text-xl md:text-2xl lg:text-4xl"/>
+        </div>
       </div>
     </div>
   );

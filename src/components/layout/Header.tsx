@@ -32,14 +32,14 @@ function Header() {
 
   return (
     <div
-      className={`bg-${secondaryColor} flex items-center justify-between relative py-1 sm:py-0`}
+      className={`bg-${secondaryColor} flex items-center justify-between relative py-1 sm:py-0 max-[426px]:py-0`}
     >
       <Image
         src={headerImage}
         alt="Logo"
         width={100}
         height={100}
-        className="m-5 rounded-full shadow-2xl shadow-black hover:cursor-pointer w-16 h-16 md:w-24 md:h-24"
+        className="m-5 rounded-full shadow-2xl shadow-black hover:cursor-pointer w-16 h-16 md:w-24 md:h-24 max-[426px]:w-10 max-[426px]:h-10 max-[426px]:m-2"
         priority
       />
       <motion.div
@@ -58,7 +58,7 @@ function Header() {
         />
       </motion.div>
       <button
-        className={`lg:hidden m-5 text-3xl text-${primaryColor}`}
+        className={`lg:hidden m-5 text-3xl text-${primaryColor} max-[426px]:text-xl max-[426px]:m-2`}
         onClick={() => setIsMenuOpen(!isMenuOpen)}
       >
         <FontAwesomeIcon icon={isMenuOpen ? faTimes : faBars} />
