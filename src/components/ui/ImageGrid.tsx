@@ -6,7 +6,7 @@ import { primaryColor, secondaryColor } from "@/constants/colors";
 import { cartStore } from "@/store/cartStore";
 
 interface ImageGridItem {
-  image: string | import('next/image').StaticImageData;
+  image: string | import("next/image").StaticImageData;
   name: string;
   route?: string;
   price?: number;
@@ -37,7 +37,7 @@ function ImageGrid({
         {gridItems.map((gridItem, index) => (
           <ScrollAnimation key={index}>
             <div
-              className={`group flex flex-col items-center p-10 mx-5 my-10 border-3 rounded-3xl shadow-xl duration-500 common-font
+              className={`group flex flex-col items-center p-10 mx-5 my-10 border-3 rounded-3xl shadow-xl duration-500 body-font
             bg-${oppositeColor} border-${bgColor} shadow-amber-950 text-${bgColor} hover:bg-${bgColor} 
             hover:border-${oppositeColor} hover:shadow-${oppositeColor} hover:text-${oppositeColor} hover:scale-110 
             transform`}

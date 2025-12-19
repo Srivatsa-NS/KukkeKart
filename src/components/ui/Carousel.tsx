@@ -5,10 +5,13 @@ import BrownButton from "./BrownButton";
 import ScrollAnimation from "./ScrollAnimation";
 import { primaryColor } from "@/constants/colors";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import {
+  faChevronLeft,
+  faChevronRight,
+} from "@fortawesome/free-solid-svg-icons";
 
 interface Slide {
-  image: string | import('next/image').StaticImageData;
+  image: string | import("next/image").StaticImageData;
   alt: string;
   description: string;
   buy: boolean;
@@ -59,7 +62,7 @@ function Carousel({ slides }: CarouselProps) {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
                     transition={{ delay: 0.5, duration: 0.6, ease: "easeOut" }}
-                    className="mt-6 text-lg md:text-2xl lg:text-4xl font-medium text-amber-900 common-font text-center"
+                    className={`mt-6 text-lg md:text-2xl lg:text-4xl font-medium text-amber-900 body-font text-center`}
                   >
                     {slide.description}
                   </motion.p>
@@ -69,7 +72,10 @@ function Carousel({ slides }: CarouselProps) {
             <ScrollAnimation>
               {slide.buy && (
                 <div className="mt-3 sm:mt-7">
-                  <BrownButton name="Add to Cart" textSize="text-xs sm:text-base md:text-xl lg:text-2xl xl:text-3xl"/>
+                  <BrownButton
+                    name="Add to Cart"
+                    textSize="text-xs sm:text-base md:text-xl lg:text-2xl xl:text-3xl"
+                  />
                 </div>
               )}
             </ScrollAnimation>
@@ -82,10 +88,13 @@ function Carousel({ slides }: CarouselProps) {
         onClick={prevSlide}
       >
         <div className="block sm:hidden">
-          <FontAwesomeIcon icon={faChevronLeft} className={`text-2xl text-${primaryColor}`} />
+          <FontAwesomeIcon
+            icon={faChevronLeft}
+            className={`text-2xl text-${primaryColor}`}
+          />
         </div>
         <div className="hidden sm:block scale-50 md:scale-100">
-          <BrownButton name="<" textSize="text-xl md:text-2xl lg:text-4xl"/>
+          <BrownButton name="<" textSize="text-xl md:text-2xl lg:text-4xl" />
         </div>
       </div>
 
@@ -106,10 +115,13 @@ function Carousel({ slides }: CarouselProps) {
         onClick={nextSlide}
       >
         <div className="block sm:hidden">
-          <FontAwesomeIcon icon={faChevronRight} className={`text-2xl text-${primaryColor}`} />
+          <FontAwesomeIcon
+            icon={faChevronRight}
+            className={`text-2xl text-${primaryColor}`}
+          />
         </div>
         <div className="hidden sm:block scale-50 md:scale-100">
-          <BrownButton name=">" textSize="text-xl md:text-2xl lg:text-4xl"/>
+          <BrownButton name=">" textSize="text-xl md:text-2xl lg:text-4xl" />
         </div>
       </div>
     </div>

@@ -37,11 +37,7 @@ function Index() {
         className={`bg-${primaryColor} p-3`}
         style={{
           marginTop:
-            windowWidth <= 426
-              ? "-80px"
-              : windowWidth <= 768
-              ? "-35px"
-              : "0",
+            windowWidth <= 426 ? "-80px" : windowWidth <= 768 ? "-35px" : "0",
         }}
       >
         <div className="flex flex-col xl:flex-row justify-center items-center relative">
@@ -69,7 +65,7 @@ function Index() {
             transition={{ duration: 1 }}
           >
             <p
-              className={`p-2 sm:p-4 md:p-6 xl:p-8 mx-10 md:mx-0 max-md:mx-0 bg-${secondaryColor} text-xs sm:text-sm md:text-2xl lg:text-2xl xl:text-4xl rounded-4xl text-${primaryColor} common-font font-bold max-[426px]:text-center`}
+              className={`p-2 sm:p-4 md:p-6 xl:p-8 mx-10 md:mx-0 max-md:mx-0 bg-${secondaryColor} text-sm sm:text-md md:text-2xl lg:text-2xl xl:text-2xl rounded-4xl text-${primaryColor} body-font font-black max-[426px]:text-center`}
             >
               KukkeKart:
               <br />
@@ -86,7 +82,7 @@ function Index() {
               <Link href={"/products"}>
                 <ArrowButton
                   name="Explore Collections"
-                  textSize="text-xs max-md:text-xs sm:text-sm md:text-base xl:text-2xl"
+                  textSize="text-sm max-md:text-md sm:text-md md:text-base xl:text-xl"
                 />
               </Link>
             </div>
@@ -96,7 +92,7 @@ function Index() {
       <ScrollAnimation
         className={`relative mb-2 md:mb-10 bg-${secondaryColor} items-center w-full px-10 py-10 text-${primaryColor}`}
       >
-        <p className="common-font text-3xl md:text-5xl lg:text-6xl absolute left-1/2 -translate-x-1/2">
+        <p className="headings-font text-3xl md:text-5xl lg:text-6xl absolute left-1/2 -translate-x-1/2">
           Our Best Sellers
         </p>
       </ScrollAnimation>
@@ -107,7 +103,7 @@ function Index() {
         <ScrollAnimation
           className={`bg-${primaryColor} items-center w-full pt-10 text-${secondaryColor}`}
         >
-          <p className="common-font text-6xl absolute left-1/2 -translate-x-1/2">
+          <p className="headings-font text-6xl absolute left-1/2 -translate-x-1/2">
             Our Assortment
           </p>
         </ScrollAnimation>

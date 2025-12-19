@@ -37,7 +37,7 @@ function GridCarousel({ items }: GridCarouselProps) {
         {items.map((item, index) => (
           <div
             key={index}
-            className={`group flex flex-col items-center p-10 border-3 rounded-3xl shadow-xl duration-500 common-font
+            className={`group flex flex-col items-center p-10 border-3 rounded-3xl shadow-xl duration-500 headings-font
             bg-${secondaryColor} border-${primaryColor} shadow-amber-950 text-${primaryColor} hover:cursor-pointer
             hover:bg-${primaryColor} hover:border-${secondaryColor} hover:shadow-${secondaryColor}0 hover:text-${secondaryColor}
             hover:scale-110 hover:z-10 transform origin-center flex-shrink-0`}

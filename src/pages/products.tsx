@@ -68,7 +68,7 @@ function Products() {
     <div className={`bg-${primaryColor} min-h-screen`}>
       <ScrollAnimation>
         <div className="text-center pt-10 pb-8">
-          <p className="common-font text-amber-50 text-6xl">Our products</p>
+          <p className="headings-font text-amber-50 text-6xl">Our products</p>
         </div>
       </ScrollAnimation>
 

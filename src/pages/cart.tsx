@@ -64,7 +64,7 @@ function Cart() {
     <div className={`bg-${primaryColor} min-h-screen`}>
       <ScrollAnimation>
         <div className="text-center pt-10 pb-8">
-          <p className="common-font text-amber-50 text-6xl">Your Cart</p>
+          <p className="headings-font text-amber-50 text-6xl">Your Cart</p>
         </div>
       </ScrollAnimation>
 
@@ -87,7 +87,7 @@ function Cart() {
                   />
                   <div className="flex-1 ml-6">
                     <h3
-                      className={`text-2xl font-bold text-${primaryColor} common-font`}
+                      className={`text-2xl font-bold text-${primaryColor} headings-font`}
                     >
                       {item.name}
                     </h3>
@@ -152,7 +152,7 @@ function Cart() {
         <ScrollAnimation>
           <div className="text-center py-20">
             <div className="text-8xl mb-8">🛒</div>
-            <p className="common-font text-amber-50 text-4xl mb-4">
+            <p className="headings-font text-amber-50 text-4xl mb-4">
               Your cart is empty
             </p>
             <p className="text-amber-50 text-xl opacity-75">

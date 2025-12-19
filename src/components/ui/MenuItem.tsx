@@ -29,7 +29,7 @@ const MenuItem = ({ label, route, onClick }: { label: string | React.ReactNode; 
           setCurrentPage(route);
           onClick?.();
         }}
-        className="mx-4 px-5 rounded-2xl menu-item common-font hover:cursor-pointer"
+        className="mx-4 px-5 rounded-2xl menu-item headings-font hover:cursor-pointer"
       >
         {label}
       </motion.div>
