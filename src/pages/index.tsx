@@ -34,7 +34,7 @@ function Index() {
   return (
     <div className={`bg-${secondaryColor}`}>
       <div
-        className={`bg-${primaryColor} p-3`}
+        className={`bg-${primaryColor} p-3 w-full`}
         style={{
           marginTop:
             windowWidth <= 426 ? "-80px" : windowWidth <= 768 ? "-35px" : "0",
@@ -65,7 +65,7 @@ function Index() {
             transition={{ duration: 1 }}
           >
             <p
-              className={`p-2 sm:p-4 md:p-6 xl:p-8 mx-10 md:mx-0 max-md:mx-0 bg-${secondaryColor} text-sm sm:text-md md:text-2xl lg:text-2xl xl:text-2xl rounded-4xl text-${primaryColor} body-font font-black max-[426px]:text-center`}
+              className={`p-2 sm:p-4 md:p-6 xl:p-8 md:mx-0 max-md:mx-0 bg-${secondaryColor} text-sm sm:text-md md:text-2xl lg:text-2xl xl:text-2xl rounded-4xl text-${primaryColor} body-font font-black max-[426px]:text-center`}
             >
               KukkeKart:
               <br />
@@ -96,10 +96,10 @@ function Index() {
           Our Best Sellers
         </p>
       </ScrollAnimation>
-      <ScrollAnimation className={`bg-${secondaryColor}`}>
+      <ScrollAnimation className={`bg-${secondaryColor} w-full`}>
         <Carousel slides={bestSellers} />
       </ScrollAnimation>
-      <div className={`bg-${primaryColor}`}>
+      <div className={`bg-${primaryColor} w-full`}>
         <ScrollAnimation
           className={`bg-${primaryColor} items-center w-full pt-10 text-${secondaryColor}`}
         >
