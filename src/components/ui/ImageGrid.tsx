@@ -32,12 +32,12 @@ function ImageGrid({
   };
 
   return (
-    <div className="px-2 sm:px-4 md:px-10 lg:px-20 pt-5 pb-20 max-w-full overflow-x-hidden">
+    <div className="px-2 sm:px-4 md:px-10 lg:px-20 pt-5 pb-20 max-w-full overflow-x-hidden mt-10 min-[400px]:max-[550px]:m-10 min-[550px]:max-[640px]:m-10">
       <div className="grid grid-cols-2 lg:grid-cols-3 gap-1 sm:gap-2 md:gap-4 lg:gap-6 max-w-full">
         {gridItems.map((gridItem, index) => (
           <ScrollAnimation key={index}>
             <div
-              className={`group flex flex-col items-center p-4 sm:p-6 md:p-10 mx-0 sm:mx-1 md:mx-3 lg:mx-5 my-10 border-3 rounded-3xl shadow-xl duration-500 body-font
+              className={`group flex flex-col items-center py-5 sm:p-6 md:px-4 md:py-6 lg:px-6 lg:py-8 xl:px-8 xl:py-10 mx-0 sm:mx-3 max-[600px]:mx-1 min-[500px]:max-[600px]:mx-2 max-[500px]:mx-0 min-[550px]:max-[640px]:m-5 md:mx-3 lg:mx-5 mt-2 border-3 rounded-3xl shadow-xl duration-500 body-font
             bg-${oppositeColor} border-${bgColor} shadow-amber-950 text-${bgColor} hover:bg-${bgColor} 
             hover:border-${oppositeColor} hover:shadow-${oppositeColor} hover:text-${oppositeColor} hover:scale-110 
             transform`}
@@ -51,7 +51,7 @@ function ImageGrid({
                 blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
               />
               <div className="text-center">
-                <span className="text-lg sm:text-2xl md:text-4xl group-hover:text-xl sm:group-hover:text-3xl md:group-hover:text-5xl duration-500">
+                <span className="text-md sm:text-2xl md:text-4xl group-hover:text-xl sm:group-hover:text-3xl md:group-hover:text-5xl duration-500 whitespace-nowrap">
                   {gridItem.name}
                 </span>
                 {gridItem.quantity && (

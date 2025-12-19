@@ -62,7 +62,7 @@ function Carousel({ slides }: CarouselProps) {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
                     transition={{ delay: 0.5, duration: 0.6, ease: "easeOut" }}
-                    className={`mt-6 text-lg md:text-2xl lg:text-4xl font-medium text-amber-900 body-font text-center`}
+                    className={`mt-6 text-md md:text-xl lg:text-2xl font-medium text-amber-900 body-font text-center`}
                   >
                     {slide.description}
                   </motion.p>
