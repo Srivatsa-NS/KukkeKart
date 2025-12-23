@@ -1,5 +1,8 @@
 import { useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/router";
+import { useSetRecoilState } from "recoil";
+import { currentPageState } from "@/store/pageState";
 import ScrollAnimation from "./ScrollAnimation";
 import QuantityControls from "./QuantityControls";
 import { primaryColor, secondaryColor } from "@/constants/colors";
@@ -24,11 +27,24 @@ function ImageGrid({
   gridItems: ImageGridItem[];
 }) {
   const [, setCartUpdate] = useState(0);
+  const router = useRouter();
+  const setCurrentPage = useSetRecoilState(currentPageState);
   const oppositeColor = bgColor == primaryColor ? secondaryColor : primaryColor;
 
   const forceUpdate = () => {
     setCartUpdate((prev) => prev + 1);
     console.log(cartStore.getItems());
+  };
+
+  const handleItemClick = (gridItem: ImageGridItem) => {
+    if (gridItem.route) {
+      setCurrentPage(gridItem.route);
+      const query = gridItem.name ? { category: gridItem.name } : {};
+      router.push({
+        pathname: gridItem.route,
+        query,
+      });
+    }
   };
 
   return (
@@ -40,7 +56,8 @@ function ImageGrid({
               className={`group flex flex-col items-center py-5 sm:p-6 md:px-4 md:py-6 lg:px-6 lg:py-8 xl:px-8 xl:py-10 mx-0 sm:mx-3 max-[600px]:mx-1 min-[500px]:max-[600px]:mx-2 max-[500px]:mx-0 min-[550px]:max-[640px]:m-5 md:mx-3 lg:mx-5 mt-2 border-3 rounded-3xl shadow-xl duration-500 body-font
             bg-${oppositeColor} border-${bgColor} shadow-amber-950 text-${bgColor} hover:bg-${bgColor} 
             hover:border-${oppositeColor} hover:shadow-${oppositeColor} hover:text-${oppositeColor} hover:scale-110 
-            transform`}
+            transform ${gridItem.route ? 'cursor-pointer' : ''}`}
+              onClick={() => handleItemClick(gridItem)}
             >
               <Image
                 src={gridItem.image}

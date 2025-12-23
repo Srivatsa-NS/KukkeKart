@@ -1,8 +1,12 @@
 import React from "react";
 import Link from "next/link";
+import { useSetRecoilState } from "recoil";
+import { currentPageState } from "@/store/pageState";
 import { primaryColor, secondaryColor } from "@/constants/colors";
 
 function Footer() {
+  const setCurrentPage = useSetRecoilState(currentPageState);
+
   return (
     <footer
       className={`bg-${primaryColor} text-${secondaryColor} py-12 px-4 relative overflow-hidden`}
@@ -55,6 +59,7 @@ function Footer() {
                 <Link
                   href="/"
                   className="text-base hover:text-opacity-75 transition-all duration-300 hover:translate-x-1 inline-block"
+                  onClick={() => setCurrentPage("/")}
                 >
                   → Home
                 </Link>
@@ -63,6 +68,7 @@ function Footer() {
                 <Link
                   href="/products"
                   className="text-base hover:text-opacity-75 transition-all duration-300 hover:translate-x-1 inline-block"
+                  onClick={() => setCurrentPage("/products")}
                 >
                   → Products
                 </Link>
@@ -71,6 +77,7 @@ function Footer() {
                 <Link
                   href="/about"
                   className="text-base hover:text-opacity-75 transition-all duration-300 hover:translate-x-1 inline-block"
+                  onClick={() => setCurrentPage("/about")}
                 >
                   → About Us
                 </Link>
@@ -79,6 +86,7 @@ function Footer() {
                 <Link
                   href="/contact"
                   className="text-base hover:text-opacity-75 transition-all duration-300 hover:translate-x-1 inline-block"
+                  onClick={() => setCurrentPage("/contact")}
                 >
                   → Contact
                 </Link>
@@ -121,12 +129,14 @@ function Footer() {
               <Link
                 href="/privacy"
                 className="hover:opacity-75 transition-opacity"
+                onClick={() => setCurrentPage("/privacy")}
               >
                 Privacy Policy
               </Link>
               <Link
                 href="/terms"
                 className="hover:opacity-75 transition-opacity"
+                onClick={() => setCurrentPage("/terms")}
               >
                 Terms of Service
               </Link>

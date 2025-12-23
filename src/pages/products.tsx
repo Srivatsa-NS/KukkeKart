@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import ImageGrid from "@/components/ui/ImageGrid";
 import ScrollAnimation from "@/components/ui/ScrollAnimation";
 import SortDropdown from "@/components/ui/SortDropdown";
@@ -7,11 +8,20 @@ import { allProducts } from "@/constants/GridItems";
 import { primaryColor, secondaryColor } from "@/constants/colors";
 
 function Products() {
+  const router = useRouter();
   const [displayedProducts, setDisplayedProducts] = useState(allProducts);
   const [currentFilter, setCurrentFilter] = useState("");
   const [currentSort, setCurrentSort] = useState("");
   const [gridKey, setGridKey] = useState(0);
   const [isClearing, setIsClearing] = useState(false);
+
+  useEffect(() => {
+    if (router.isReady && router.query.category) {
+      const category = router.query.category as string;
+      setCurrentFilter(category);
+      applyFilterAndSort(category, currentSort);
+    }
+  }, [router.isReady, router.query.category]);
 
   const applyFilterAndSort = (filterCategory: string, sortType: string) => {
     let result = [...allProducts];
