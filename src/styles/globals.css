@@ -1,0 +1,26 @@
+@import url("https://fonts.googleapis.com/css2?family=Qwitcher+Grypen:wght@400;700&display=swap");
+
+@import "tailwindcss";
+
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+.headings-font {
+  font-family: "Qwitcher Grypen", cursive;
+  font-weight: 900;
+  font-style: normal;
+  text-shadow: 0.5px 0.5px 0px currentColor, 1px 1px 0px currentColor;
+  letter-spacing: 0.05em;
+}
+
+.body-font {
+  font-family: "Lora", serif;
+  font-style: italic;
+  font-weight: 700;
+}
+
+.menu-item {
+  font-size: 2rem;
+}

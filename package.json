@@ -1,0 +1,42 @@
+{
+  "name": "my-frontend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "npm run optimize-images && next build",
+    "build:no-optimize": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "optimize-images": "node scripts/optimize-images.js",
+    "update-imports": "node scripts/update-imports.js"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^7.0.1",
+    "@fortawesome/free-solid-svg-icons": "^7.0.1",
+    "@fortawesome/react-fontawesome": "^3.0.2",
+    "framer-motion": "^12.23.12",
+    "next": "15.4.6",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-redux": "^9.2.0",
+    "recoil": "^0.7.7"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^9",
+    "eslint-config-next": "15.4.6",
+    "glob": "^13.0.0",
+    "imagemin": "^9.0.1",
+    "imagemin-mozjpeg": "^10.0.0",
+    "imagemin-pngquant": "^10.0.0",
+    "imagemin-webp": "^8.0.0",
+    "sharp": "^0.34.5",
+    "tailwindcss": "^4.1.11",
+    "typescript": "^5"
+  }
+}
