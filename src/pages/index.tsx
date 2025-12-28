@@ -1,5 +1,5 @@
 import heroImage from "@/assets/optimized/hero-image.webp";
-import { bestSellers } from "@/constants/CarouselSlides";
+import { bestSellers } from "@/constants/carouselSlides";
 import { categories } from "@/constants/GridItems";
 import Image from "next/image";
 import { motion, useAnimation } from "framer-motion";

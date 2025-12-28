@@ -125,22 +125,6 @@ function Footer() {
               &copy; 2024 KukkeKart. All rights reserved. Made with ❤️ for spice
               lovers.
             </p>
-            <div className="flex space-x-6 body-font text-sm">
-              <Link
-                href="/privacy"
-                className="hover:opacity-75 transition-opacity"
-                onClick={() => setCurrentPage("/privacy")}
-              >
-                Privacy Policy
-              </Link>
-              <Link
-                href="/terms"
-                className="hover:opacity-75 transition-opacity"
-                onClick={() => setCurrentPage("/terms")}
-              >
-                Terms of Service
-              </Link>
-            </div>
           </div>
         </div>
       </div>
