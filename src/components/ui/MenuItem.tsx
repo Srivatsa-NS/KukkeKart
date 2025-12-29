@@ -1,7 +1,8 @@
 import { currentPageState } from "@/store/pageState";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import React from "react";
+import { useRouter } from "next/router";
+import React, { useEffect } from "react";
 import { useRecoilState } from "recoil";
 
 const item = {
@@ -9,8 +10,21 @@ const item = {
   visible: { opacity: 1, y: 0 },
 };
 
-const MenuItem = ({ label, route, onClick }: { label: string | React.ReactNode; route: string; onClick?: () => void }) => {
+const MenuItem = ({
+  label,
+  route,
+  onClick,
+}: {
+  label: string | React.ReactNode;
+  route: string;
+  onClick?: () => void;
+}) => {
   const [currentPage, setCurrentPage] = useRecoilState(currentPageState);
+  const router = useRouter();
+
+  useEffect(() => {
+    setCurrentPage(router.pathname);
+  }, [router.pathname, setCurrentPage]);
 
   return (
     <Link href={route}>
