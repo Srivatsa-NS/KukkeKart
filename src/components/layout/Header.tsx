@@ -10,6 +10,8 @@ import {
   faTimes,
 } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 const container = {
   visible: {
@@ -29,6 +31,8 @@ const menuItems = {
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const router = useRouter();
+  const isCartActive = router.pathname === "/cart";
 
   return (
     <div
@@ -57,12 +61,27 @@ function Header() {
           route="/cart"
         />
       </motion.div>
-      <button
-        className={`lg:hidden m-5 text-3xl text-${primaryColor} max-[426px]:text-xl max-[426px]:m-2`}
-        onClick={() => setIsMenuOpen(!isMenuOpen)}
-      >
-        <FontAwesomeIcon icon={isMenuOpen ? faTimes : faBars} />
-      </button>
+      <div className="lg:hidden flex items-center gap-3">
+        <Link href="/cart">
+          <button
+            className={`m-5 text-3xl max-[426px]:text-xl max-[426px]:m-2`}
+            style={{
+              color: isCartActive ? "#fffbeb" : "#92400e",
+              backgroundColor: isCartActive ? "#92400e" : "transparent",
+              borderRadius: isCartActive ? "0.5rem" : "0",
+              padding: isCartActive ? "0.5rem" : "0",
+            }}
+          >
+            <FontAwesomeIcon icon={faShoppingCart} />
+          </button>
+        </Link>
+        <button
+          className={`m-5 text-3xl text-${primaryColor} max-[426px]:text-xl max-[426px]:m-2`}
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+        >
+          <FontAwesomeIcon icon={isMenuOpen ? faTimes : faBars} />
+        </button>
+      </div>
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
@@ -85,12 +104,6 @@ function Header() {
                 onClick={() => setIsMenuOpen(false)}
               />
             ))}
-            <MenuItem
-              key="cart"
-              label={<FontAwesomeIcon icon={faShoppingCart} />}
-              route="/cart"
-              onClick={() => setIsMenuOpen(false)}
-            />
           </motion.div>
         )}
       </AnimatePresence>
