@@ -37,7 +37,7 @@ function About() {
               className={`body-font text-lg text-${primaryColor} leading-relaxed`}
             >
               At KukkeKart, we believe that nature offers the best when handled
-              with honesty. That's why every product is carefully selected,
+              with honesty. That&apos;s why every product is carefully selected,
               hygienically processed, and packed with love to retain its natural
               aroma, freshness, and nutritional value.
             </p>
@@ -116,7 +116,7 @@ function About() {
                 fruits from Kukke Subrahmanya and the Western Ghats directly to
                 every home. We are committed to honest sourcing, uncompromised
                 quality, and customer-first service, ensuring that every product
-                reflects nature's true goodness.
+                reflects nature&apos;s true goodness.
               </p>
             </div>
           </ScrollAnimation>
