@@ -58,6 +58,7 @@ function ProductModal({
       setQuantities(getInitialQuantities());
       setShowBenefits(false);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen, product.name]);
 
   if (!isOpen) return null;

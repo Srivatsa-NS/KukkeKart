@@ -21,6 +21,7 @@ function Products() {
       setCurrentFilter(category);
       applyFilterAndSort(category, currentSort);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.isReady, router.query.category]);
 
   const applyFilterAndSort = (filterCategory: string, sortType: string) => {

@@ -31,7 +31,7 @@ function Cart() {
     });
     acc[item.name].totalPrice += item.price * item.cartQuantity;
     return acc;
-  }, {} as Record<string, { name: string; image: any; category: string; weights: Array<{ quantity: string; cartQuantity: number; price: number }>; totalPrice: number }>);
+  }, {} as Record<string, { name: string; image: string | import("next/image").StaticImageData; category: string; weights: Array<{ quantity: string; cartQuantity: number; price: number }>; totalPrice: number }>);
 
   const groupedItemsArray = Object.values(groupedItems);
 
@@ -55,7 +55,7 @@ function Cart() {
     let message = "🛒 *New Order from KukkeKart*\n\n";
     message += "📋 *Order Details:*\n";
 
-    cartItems.forEach((item, index) => {
+    cartItems.forEach((item) => {
       const itemIndex = message.split('\n').filter(line => line.match(/^\d+\./)).length;
       const existingItemIndex = message.indexOf(`${item.name}\n`);
       
@@ -97,11 +97,10 @@ function Cart() {
       {groupedItemsArray.length > 0 ? (
         <div className="px-8 pb-20">
           <div className="max-w-4xl mx-auto">
-            {groupedItemsArray.map((item, index) => (
+            {groupedItemsArray.map((item) => (
               <ScrollAnimation key={item.name}>
                 <div
                   className={`flex items-center bg-${secondaryColor} rounded-2xl p-6 mb-4 shadow-lg border-2 border-${primaryColor} transform hover:scale-[1.02] transition-all duration-300`}
-                  style={{ animationDelay: `${index * 100}ms` }}
                 >
                   <Image
                     src={item.image}

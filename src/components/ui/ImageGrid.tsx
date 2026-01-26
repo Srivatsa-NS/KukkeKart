@@ -54,6 +54,12 @@ function ImageGrid({
     }
   };
 
+  const UNIT_TO_GRAMS: Record<string, number> = {
+    "250g": 250,
+    "500g": 500,
+    "1kg": 1000,
+  };
+
   return (
     <div className="px-2 sm:px-4 md:px-10 lg:px-20 pt-5 pb-20 max-w-full overflow-x-hidden mt-10 min-[400px]:max-[550px]:m-10 min-[550px]:max-[640px]:m-10">
       <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-1 gap-y-1 sm:gap-x-2 sm:gap-y-2 md:gap-x-3 md:gap-y-4 lg:gap-x-1 lg:gap-y-6 max-w-full">
@@ -75,36 +81,38 @@ function ImageGrid({
                   placeholder="blur"
                   blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
                 />
+
                 <div className="text-center flex flex-col gap-2">
                   <span className="text-md sm:text-2xl md:text-4xl lg:text-3xl group-hover:text-xl sm:group-hover:text-3xl md:group-hover:text-5xl lg:group-hover:text-4xl duration-500 whitespace-nowrap">
                     {gridItem.name}
                   </span>
+
                   {gridItem.showAddToCart &&
                     cartStore.getItemQuantity(gridItem.name) > 0 &&
                     (() => {
                       const cartItems = cartStore
                         .getItems()
                         .filter((item) => item.name === gridItem.name);
+
                       const quantityMap = cartItems.reduce((acc, item) => {
                         acc[item.quantity] =
                           (acc[item.quantity] || 0) + item.cartQuantity;
                         return acc;
                       }, {} as Record<string, number>);
 
+                      const totalGrams = Object.entries(quantityMap).reduce(
+                        (sum, [qty, count]) => {
+                          const gramsPerUnit = UNIT_TO_GRAMS[qty] || 0;
+                          return sum + gramsPerUnit * count;
+                        },
+                        0
+                      );
+
+                      const totalKg = (totalGrams / 1000).toFixed(2);
+
                       return (
-                        <div>
-                          <p className="text-xs sm:text-sm font-semibold">
-                            {Object.entries(quantityMap).map(
-                              ([qty, count], idx) => (
-                                <span key={idx}>
-                                  {qty} x {count}
-                                  {idx < Object.keys(quantityMap).length - 1
-                                    ? ", "
-                                    : ""}
-                                </span>
-                              )
-                            )}
-                          </p>
+                        <div className="text-xs sm:text-sm font-semibold">
+                          <p>{totalKg} kg</p>
                           <p>Added to cart</p>
                         </div>
                       );
@@ -115,6 +123,7 @@ function ImageGrid({
           </ScrollAnimation>
         ))}
       </div>
+
       {selectedProduct && (
         <ProductModal
           isOpen={isModalOpen}
