@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import ScrollAnimation from "@/components/ui/ScrollAnimation";
-import QuantityControls from "@/components/ui/QuantityControls";
 import BrownButton from "@/components/ui/BrownButton";
 import { cartStore } from "@/store/cartStore";
 import { primaryColor, secondaryColor } from "@/constants/colors";
@@ -13,6 +12,28 @@ function Cart() {
   useEffect(() => {
     setCartItems(cartStore.getItems());
   }, [updateTrigger]);
+
+  // Group items by product name
+  const groupedItems = cartItems.reduce((acc, item) => {
+    if (!acc[item.name]) {
+      acc[item.name] = {
+        name: item.name,
+        image: item.image,
+        category: item.category,
+        weights: [],
+        totalPrice: 0,
+      };
+    }
+    acc[item.name].weights.push({
+      quantity: item.quantity,
+      cartQuantity: item.cartQuantity,
+      price: item.price,
+    });
+    acc[item.name].totalPrice += item.price * item.cartQuantity;
+    return acc;
+  }, {} as Record<string, { name: string; image: any; category: string; weights: Array<{ quantity: string; cartQuantity: number; price: number }>; totalPrice: number }>);
+
+  const groupedItemsArray = Object.values(groupedItems);
 
   const totalAmount = cartItems.reduce(
     (total, item) => total + item.price * item.cartQuantity,
@@ -35,9 +56,14 @@ function Cart() {
     message += "📋 *Order Details:*\n";
 
     cartItems.forEach((item, index) => {
-      message += `${index + 1}. ${item.name}\n`;
-      message += `   Quantity: ${item.cartQuantity}x (${item.quantity})\n`;
-      message += `   Price: Rs.${item.price * item.cartQuantity}\n\n`;
+      const itemIndex = message.split('\n').filter(line => line.match(/^\d+\./)).length;
+      const existingItemIndex = message.indexOf(`${item.name}\n`);
+      
+      if (existingItemIndex === -1) {
+        message += `${itemIndex + 1}. ${item.name}\n`;
+        message += `   Quantity: ${item.cartQuantity}x (${item.quantity})\n`;
+        message += `   Price: Rs.${item.price * item.cartQuantity}\n\n`;
+      }
     });
 
     message += `📊 *Order Summary:*\n`;
@@ -68,10 +94,10 @@ function Cart() {
         </div>
       </ScrollAnimation>
 
-      {cartItems.length > 0 ? (
+      {groupedItemsArray.length > 0 ? (
         <div className="px-8 pb-20">
           <div className="max-w-4xl mx-auto">
-            {cartItems.map((item, index) => (
+            {groupedItemsArray.map((item, index) => (
               <ScrollAnimation key={item.name}>
                 <div
                   className={`flex items-center bg-${secondaryColor} rounded-2xl p-6 mb-4 shadow-lg border-2 border-${primaryColor} transform hover:scale-[1.02] transition-all duration-300`}
@@ -91,30 +117,18 @@ function Cart() {
                     >
                       {item.name}
                     </h3>
-                    <p className={`text-${primaryColor} opacity-75`}>
-                      {item.quantity}
+                    <p className={`text-${primaryColor} opacity-75 text-sm font-semibold`}>
+                      {item.weights.map((w, idx) => (
+                        <span key={idx}>
+                          {w.quantity} x {w.cartQuantity}
+                          {idx < item.weights.length - 1 ? ', ' : ''}
+                        </span>
+                      ))}
                     </p>
-                  </div>
-                  <div className="flex items-center justify-center w-40">
-                    <QuantityControls
-                      itemName={item.name}
-                      bgColor={primaryColor}
-                      textColor={primaryColor}
-                      borderColor={secondaryColor}
-                      size="small"
-                      onUpdate={forceUpdate}
-                      item={{
-                        name: item.name,
-                        price: item.price,
-                        quantity: item.quantity,
-                        category: item.category,
-                        image: item.image,
-                      }}
-                    />
                   </div>
                   <div className="ml-6 text-right w-32">
                     <p className={`text-2xl font-bold text-${primaryColor}`}>
-                      ₹{item.price * item.cartQuantity}
+                      ₹{item.totalPrice}
                     </p>
                   </div>
                 </div>

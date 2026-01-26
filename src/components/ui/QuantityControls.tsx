@@ -25,7 +25,7 @@ function QuantityControls({
   size = 'normal',
   item 
 }: QuantityControlsProps) {
-  const quantity = cartStore.getItemQuantity(itemName);
+  const quantity = item ? cartStore.getItems().filter(i => i.name === itemName && i.quantity === item.quantity).reduce((sum, i) => sum + i.cartQuantity, 0) : cartStore.getItemQuantity(itemName);
   
   const buttonSize = size === 'small' ? 'w-8 h-8' : 'w-10 h-10';
   const textSize = size === 'small' ? 'text-lg' : 'text-xl';
@@ -43,8 +43,10 @@ function QuantityControls({
   };
 
   const handleRemove = () => {
-    cartStore.removeItem(itemName);
-    onUpdate();
+    if (item) {
+      cartStore.removeItem(itemName, item.quantity);
+      onUpdate();
+    }
   };
 
   return (

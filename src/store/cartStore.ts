@@ -3,16 +3,19 @@ interface CartItem {
   price: number;
   quantity: string;
   category: string;
-  image: string | import('next/image').StaticImageData;
+  image: string | import("next/image").StaticImageData;
   cartQuantity: number;
 }
 
 class CartStore {
   private items: CartItem[] = [];
 
-  addItem(item: Omit<CartItem, 'cartQuantity'>) {
-    const existingItem = this.items.find(cartItem => cartItem.name === item.name);
-    
+  addItem(item: Omit<CartItem, "cartQuantity">) {
+    const existingItem = this.items.find(
+      (cartItem) =>
+        cartItem.name === item.name && cartItem.quantity === item.quantity
+    );
+
     if (existingItem) {
       existingItem.cartQuantity += 1;
     } else {
@@ -20,21 +23,28 @@ class CartStore {
     }
   }
 
-  removeItem(itemName: string) {
-    const existingItem = this.items.find(cartItem => cartItem.name === itemName);
-    
+  removeItem(itemName: string, itemQuantity?: string) {
+    const existingItem = this.items.find(
+      (cartItem) =>
+        cartItem.name === itemName &&
+        (!itemQuantity || cartItem.quantity === itemQuantity)
+    );
+
     if (existingItem) {
       if (existingItem.cartQuantity > 1) {
         existingItem.cartQuantity -= 1;
       } else {
-        this.items = this.items.filter(item => item.name !== itemName);
+        this.items = this.items.filter(
+          (item) =>
+            !(item.name === itemName && item.quantity === existingItem.quantity)
+        );
       }
     }
   }
 
   getItemQuantity(itemName: string): number {
-    const item = this.items.find(cartItem => cartItem.name === itemName);
-    return item ? item.cartQuantity : 0;
+    const items = this.items.filter((cartItem) => cartItem.name === itemName);
+    return items.reduce((total, item) => total + item.cartQuantity, 0);
   }
 
   getItems(): CartItem[] {
