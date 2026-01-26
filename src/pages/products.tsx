@@ -82,33 +82,35 @@ function Products() {
         </div>
       </ScrollAnimation>
 
-      <div className="px-20 flex justify-between items-start mb-6">
-        <div className="flex gap-4 items-start">
-          <FilterDropdown
-            onFilterChange={handleFilterChange}
-            selectedValue={currentFilter}
-            isClearing={isClearing}
-          />
-          <SortDropdown
-            onSortChange={handleSortChange}
-            selectedValue={currentSort}
-            isClearing={isClearing}
-          />
-        </div>
-        <button
-          onClick={handleClearAll}
-          disabled={isClearing}
-          className={`px-4 py-2 border bg-${secondaryColor} text-${primaryColor} border-${primaryColor} 
+      <div className="px-2 sm:px-4 md:px-10 lg:px-20 mb-6">
+        <div className="mx-15 sm:mx-3 md:mx-3 lg:mx-10 flex flex-col sm:flex-row justify-between items-stretch gap-4">
+          <div className="flex flex-col sm:flex-row gap-4 items-stretch w-full sm:w-auto">
+            <FilterDropdown
+              onFilterChange={handleFilterChange}
+              selectedValue={currentFilter}
+              isClearing={isClearing}
+            />
+            <SortDropdown
+              onSortChange={handleSortChange}
+              selectedValue={currentSort}
+              isClearing={isClearing}
+            />
+          </div>
+          <button
+            onClick={handleClearAll}
+            disabled={isClearing}
+            className={`px-3 py-2 sm:px-4 sm:py-2 md:px-5 md:py-2 text-sm sm:text-base md:text-lg border bg-${secondaryColor} text-${primaryColor} border-${primaryColor} 
           hover:bg-${primaryColor} hover:text-${secondaryColor} hover:border-${secondaryColor} transition-all 
-          duration-500 cursor-pointer ${
+          duration-500 cursor-pointer w-full sm:w-auto font-semibold ${
             isClearing
-              ? "animate-spin scale-110 bg-red-500 text-white border-red-500 rounded-full w-12 h-12 " +
-                "flex items-center justify-center px-0 py-0"
+              ? "animate-spin scale-110 bg-red-500 text-white border-red-500 rounded-full w-10 h-10 sm:w-12 sm:h-12 " +
+                "flex items-center justify-center px-0 py-0 mx-auto sm:mx-0 text-base sm:text-xl"
               : "rounded-lg"
           }`}
-        >
-          {isClearing ? "✨" : "Clear All"}
-        </button>
+          >
+            {isClearing ? "✨" : "Clear All"}
+          </button>
+        </div>
       </div>
       <ImageGrid
         key={gridKey}

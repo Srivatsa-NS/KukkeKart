@@ -80,22 +80,33 @@ function ImageGrid({
                     {gridItem.name}
                   </span>
                   {gridItem.showAddToCart &&
-                    cartStore.getItemQuantity(gridItem.name) > 0 && (() => {
-                      const cartItems = cartStore.getItems().filter(item => item.name === gridItem.name);
+                    cartStore.getItemQuantity(gridItem.name) > 0 &&
+                    (() => {
+                      const cartItems = cartStore
+                        .getItems()
+                        .filter((item) => item.name === gridItem.name);
                       const quantityMap = cartItems.reduce((acc, item) => {
-                        acc[item.quantity] = (acc[item.quantity] || 0) + item.cartQuantity;
+                        acc[item.quantity] =
+                          (acc[item.quantity] || 0) + item.cartQuantity;
                         return acc;
                       }, {} as Record<string, number>);
-                      
+
                       return (
-                        <p className="text-xs sm:text-sm font-semibold">
-                          {Object.entries(quantityMap).map(([qty, count], idx) => (
-                            <span key={idx}>
-                              {qty} x {count}
-                              {idx < Object.keys(quantityMap).length - 1 ? ', ' : ''}
-                            </span>
-                          ))}
-                        </p>
+                        <div>
+                          <p className="text-xs sm:text-sm font-semibold">
+                            {Object.entries(quantityMap).map(
+                              ([qty, count], idx) => (
+                                <span key={idx}>
+                                  {qty} x {count}
+                                  {idx < Object.keys(quantityMap).length - 1
+                                    ? ", "
+                                    : ""}
+                                </span>
+                              )
+                            )}
+                          </p>
+                          <p>Added to cart</p>
+                        </div>
                       );
                     })()}
                 </div>
