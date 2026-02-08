@@ -112,7 +112,7 @@ function ProductModal({
       onClick={onClose}
     >
       <div
-        className={`bg-${oppositeColor} rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto`}
+        className={`bg-${oppositeColor} rounded-2xl shadow-2xl max-w-4xl w-full max-h-[95vh] overflow-y-auto`}
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex flex-col md:flex-row">
@@ -127,15 +127,16 @@ function ProductModal({
           </div>
 
           {/* Content Section - 70% */}
-          <div className="md:w-[70%] w-full p-6 md:p-8">
+          <div className="md:w-[70%] w-full p-6 md:p-8" style={{ perspective: '1000px' }}>
             <AnimatePresence mode="wait">
               {!showBenefits ? (
                 <motion.div
                   key="cart"
-                  initial={{ x: 300, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  exit={{ x: -300, opacity: 0 }}
-                  transition={{ duration: 0.4, ease: "easeInOut" }}
+                  initial={{ rotateY: 90, opacity: 0 }}
+                  animate={{ rotateY: 0, opacity: 1 }}
+                  exit={{ rotateY: -90, opacity: 0 }}
+                  transition={{ duration: 0.6, ease: "easeInOut" }}
+                  style={{ transformStyle: 'preserve-3d' }}
                 >
                   <div className="flex justify-between items-start mb-6">
                     <h2
@@ -257,10 +258,11 @@ function ProductModal({
               ) : (
                 <motion.div
                   key="benefits"
-                  initial={{ x: 300, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  exit={{ x: -300, opacity: 0 }}
-                  transition={{ duration: 0.4, ease: "easeInOut" }}
+                  initial={{ rotateY: 90, opacity: 0 }}
+                  animate={{ rotateY: 0, opacity: 1 }}
+                  exit={{ rotateY: -90, opacity: 0 }}
+                  transition={{ duration: 0.6, ease: "easeInOut" }}
+                  style={{ transformStyle: 'preserve-3d' }}
                 >
                   <div className="flex justify-between items-start mb-6">
                     <h2
