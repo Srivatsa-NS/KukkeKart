@@ -37,7 +37,6 @@ function ImageGrid({
 
   const forceUpdate = () => {
     setCartUpdate((prev) => prev + 1);
-    console.log(cartStore.getItems());
   };
 
   const handleItemClick = (gridItem: ImageGridItem) => {
