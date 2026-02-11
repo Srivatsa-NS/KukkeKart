@@ -110,11 +110,19 @@ function ProductModal({
     <div
       className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"
       onClick={onClose}
+      style={{ perspective: '2000px' }}
     >
-      <div
-        className={`bg-${oppositeColor} rounded-2xl shadow-2xl max-w-4xl w-full max-h-[95vh] overflow-y-auto`}
-        onClick={(e) => e.stopPropagation()}
-      >
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={showBenefits ? 'benefits' : 'cart'}
+          initial={{ rotateY: 90, opacity: 0 }}
+          animate={{ rotateY: 0, opacity: 1 }}
+          exit={{ rotateY: -90, opacity: 0 }}
+          transition={{ duration: 0.6, ease: "easeInOut" }}
+          className={`bg-${oppositeColor} rounded-2xl shadow-2xl max-w-4xl w-full max-h-[95vh] overflow-y-auto`}
+          onClick={(e) => e.stopPropagation()}
+          style={{ transformStyle: 'preserve-3d' }}
+        >
         <div className="flex flex-col md:flex-row">
           {/* Image Section - 30% */}
           <div className="md:w-[30%] w-full p-6 flex items-center justify-center">
@@ -127,17 +135,9 @@ function ProductModal({
           </div>
 
           {/* Content Section - 70% */}
-          <div className="md:w-[70%] w-full p-6 md:p-8" style={{ perspective: '1000px' }}>
-            <AnimatePresence mode="wait">
-              {!showBenefits ? (
-                <motion.div
-                  key="cart"
-                  initial={{ rotateY: 90, opacity: 0 }}
-                  animate={{ rotateY: 0, opacity: 1 }}
-                  exit={{ rotateY: -90, opacity: 0 }}
-                  transition={{ duration: 0.6, ease: "easeInOut" }}
-                  style={{ transformStyle: 'preserve-3d' }}
-                >
+          <div className="md:w-[70%] w-full p-6 md:p-8">
+            {!showBenefits ? (
+              <>
                   <div className="flex justify-between items-start mb-6">
                     <h2
                       className={`headings-font text-3xl md:text-5xl text-${bgColor}`}
@@ -254,16 +254,9 @@ function ProductModal({
                   >
                     Add to Cart
                   </button>
-                </motion.div>
+                </>
               ) : (
-                <motion.div
-                  key="benefits"
-                  initial={{ rotateY: 90, opacity: 0 }}
-                  animate={{ rotateY: 0, opacity: 1 }}
-                  exit={{ rotateY: -90, opacity: 0 }}
-                  transition={{ duration: 0.6, ease: "easeInOut" }}
-                  style={{ transformStyle: 'preserve-3d' }}
-                >
+                <>
                   <div className="flex justify-between items-start mb-6">
                     <h2
                       className={`headings-font text-3xl md:text-5xl text-${bgColor}`}
@@ -309,12 +302,12 @@ function ProductModal({
                   >
                     Back to Product
                   </button>
-                </motion.div>
+                </>
               )}
-            </AnimatePresence>
+            </div>
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </AnimatePresence>
     </div>
   );
 }
