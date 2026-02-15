@@ -178,43 +178,43 @@ function ProductModal({
                         </>
                       )}
 
-                      <div className="mb-8">
+                      <div className="mb-6">
                         <h3
-                          className={`body-font text-xl md:text-2xl text-${bgColor} mb-4`}
+                          className={`body-font text-lg md:text-xl text-${bgColor} mb-3`}
                         >
                           Select Quantity
                         </h3>
-                        <div className="space-y-4">
+                        <div className="space-y-2">
                           {weightOptions.map((option) => (
                             <div
                               key={option.value}
-                              className={`flex items-center justify-between p-4 rounded-xl border-2 border-${bgColor}`}
+                              className={`flex items-center justify-between p-2 rounded-lg border border-${bgColor} border-opacity-30`}
                             >
-                              <div className="flex items-center gap-4">
+                              <div className="flex items-center gap-3">
                                 <span
-                                  className={`body-font text-lg md:text-xl font-semibold text-${bgColor}`}
+                                  className={`body-font text-base md:text-lg font-semibold text-${bgColor}`}
                                 >
                                   {option.label}
                                 </span>
                                 <span
-                                  className={`body-font text-sm md:text-base text-${bgColor}`}
+                                  className={`body-font text-sm text-${bgColor} opacity-70`}
                                 >
                                   ₹{getPrice(option.value)}
                                 </span>
                               </div>
-                              <div className="flex items-center gap-3">
+                              <div className="flex items-center gap-2">
                                 <button
                                   onClick={() =>
                                     handleQuantityChange(option.value, -1)
                                   }
                                   disabled={quantities[option.value] === 0}
-                                  className={`w-8 h-8 md:w-10 md:h-10 rounded-lg bg-${bgColor} text-${oppositeColor} font-bold text-xl
+                                  className={`w-7 h-7 rounded-md bg-${bgColor} text-${oppositeColor} font-bold text-lg
                             hover:scale-110 transition-transform disabled:opacity-50 disabled:cursor-not-allowed`}
                                 >
                                   -
                                 </button>
                                 <span
-                                  className={`body-font text-lg md:text-xl font-bold text-${bgColor} min-w-[2rem] text-center`}
+                                  className={`body-font text-base font-bold text-${bgColor} min-w-[1.5rem] text-center`}
                                 >
                                   {quantities[option.value]}
                                 </span>
@@ -222,7 +222,7 @@ function ProductModal({
                                   onClick={() =>
                                     handleQuantityChange(option.value, 1)
                                   }
-                                  className={`w-8 h-8 md:w-10 md:h-10 rounded-lg bg-${bgColor} text-${oppositeColor} font-bold text-xl
+                                  className={`w-7 h-7 rounded-md bg-${bgColor} text-${oppositeColor} font-bold text-lg
                             hover:scale-110 transition-transform`}
                                 >
                                   +
