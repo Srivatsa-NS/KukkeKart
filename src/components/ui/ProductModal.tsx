@@ -119,13 +119,13 @@ function ProductModal({
           <AnimatePresence mode="wait">
             <motion.div
               key={showBenefits ? "benefits" : "cart"}
-              initial={{ scale: 0.8, rotateY: 90, opacity: 0 }}
-              animate={{ scale: 1, rotateY: 0, opacity: 1 }}
-              exit={{ scale: 0.8, rotateY: 180, opacity: 0 }}
+              initial={{ rotateY: 180 }}
+              animate={{ rotateY: 0 }}
+              exit={{ rotateY: -180 }}
               transition={{ duration: 0.6, ease: "easeInOut" }}
               className={`bg-${oppositeColor} rounded-2xl shadow-2xl max-w-4xl w-full max-h-[95vh] overflow-y-auto`}
               onClick={(e) => e.stopPropagation()}
-              style={{ transformStyle: "preserve-3d" }}
+              style={{ transformStyle: "preserve-3d", backfaceVisibility: "hidden" }}
             >
               <div className="flex flex-col md:flex-row">
                 {/* Image Section - 30% */}
