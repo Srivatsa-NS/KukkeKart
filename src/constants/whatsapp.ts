@@ -1,0 +1,5 @@
+export const WHATSAPP_CONFIG = {
+  PHONE_NUMBER: "+911278501924",
+  BUSINESS_NAME: "KukkeKart",
+  CURRENCY: "Rs.",
+};
