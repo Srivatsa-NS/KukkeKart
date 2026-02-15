@@ -116,210 +116,202 @@ function ProductModal({
           onClick={onClose}
           style={{ perspective: "2000px" }}
         >
-          <motion.div
-            initial={{ scale: 0.8, rotateY: 90, opacity: 0 }}
-            animate={{ scale: 1, rotateY: 0, opacity: 1 }}
-            exit={{ scale: 0.8, rotateY: -90, opacity: 0 }}
-            transition={{ duration: 0.5, ease: "easeInOut" }}
-            className={`bg-${oppositeColor} rounded-2xl shadow-2xl max-w-4xl w-full max-h-[95vh] overflow-y-auto`}
-            onClick={(e) => e.stopPropagation()}
-            style={{ transformStyle: "preserve-3d" }}
-          >
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={showBenefits ? "benefits" : "cart"}
-                initial={{ rotateY: 0, opacity: 1 }}
-                animate={{ rotateY: 0, opacity: 1 }}
-                exit={{ rotateY: 180, opacity: 0 }}
-                transition={{ duration: 0.6, ease: "easeInOut" }}
-                style={{ transformStyle: "preserve-3d" }}
-              >
-                <div className="flex flex-col md:flex-row">
-                  {/* Image Section - 30% */}
-                  <div className="md:w-[30%] w-full p-6 flex items-center justify-center">
-                    <Image
-                      src={product.image}
-                      alt={product.name}
-                      className="w-full h-48 md:h-64 object-cover rounded-xl"
-                      loading="lazy"
-                    />
-                  </div>
-
-                  {/* Content Section - 70% */}
-                  <div className="md:w-[70%] w-full p-6 md:p-8">
-                    {!showBenefits ? (
-                      <>
-                        <div className="flex justify-between items-start mb-6">
-                          <h2
-                            className={`headings-font text-3xl md:text-5xl text-${bgColor}`}
-                          >
-                            {product.name}
-                          </h2>
-                          <button
-                            onClick={onClose}
-                            className={`text-${bgColor} hover:text-red-600 text-2xl font-bold transition-colors`}
-                          >
-                            ✕
-                          </button>
-                        </div>
-
-                        {product.description && (
-                          <>
-                            <p
-                              className={`body-font text-sm md:text-base text-${bgColor} mb-2 opacity-80 leading-relaxed`}
-                            >
-                              {product.description.length > 100
-                                ? `${product.description.substring(0, 100)}...`
-                                : product.description}
-                            </p>
-                            <a
-                              href="#"
-                              onClick={(e) => {
-                                e.preventDefault();
-                                setShowBenefits(true);
-                              }}
-                              className={`body-font text-sm md:text-base text-${bgColor} underline hover:opacity-100 opacity-70 transition-opacity mb-6 inline-block`}
-                            >
-                              Key benefits
-                            </a>
-                          </>
-                        )}
-
-                        <div className="mb-8">
-                          <h3
-                            className={`body-font text-xl md:text-2xl text-${bgColor} mb-4`}
-                          >
-                            Select Quantity
-                          </h3>
-                          <div className="space-y-4">
-                            {weightOptions.map((option) => (
-                              <div
-                                key={option.value}
-                                className={`flex items-center justify-between p-4 rounded-xl border-2 border-${bgColor}`}
-                              >
-                                <div className="flex items-center gap-4">
-                                  <span
-                                    className={`body-font text-lg md:text-xl font-semibold text-${bgColor}`}
-                                  >
-                                    {option.label}
-                                  </span>
-                                  <span
-                                    className={`body-font text-sm md:text-base text-${bgColor}`}
-                                  >
-                                    ₹{getPrice(option.value)}
-                                  </span>
-                                </div>
-                                <div className="flex items-center gap-3">
-                                  <button
-                                    onClick={() =>
-                                      handleQuantityChange(option.value, -1)
-                                    }
-                                    disabled={quantities[option.value] === 0}
-                                    className={`w-8 h-8 md:w-10 md:h-10 rounded-lg bg-${bgColor} text-${oppositeColor} font-bold text-xl
-                            hover:scale-110 transition-transform disabled:opacity-50 disabled:cursor-not-allowed`}
-                                  >
-                                    -
-                                  </button>
-                                  <span
-                                    className={`body-font text-lg md:text-xl font-bold text-${bgColor} min-w-[2rem] text-center`}
-                                  >
-                                    {quantities[option.value]}
-                                  </span>
-                                  <button
-                                    onClick={() =>
-                                      handleQuantityChange(option.value, 1)
-                                    }
-                                    className={`w-8 h-8 md:w-10 md:h-10 rounded-lg bg-${bgColor} text-${oppositeColor} font-bold text-xl
-                            hover:scale-110 transition-transform`}
-                                  >
-                                    +
-                                  </button>
-                                </div>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-
-                        <div
-                          className={`mb-6 p-4 rounded-xl bg-${bgColor} bg-opacity-10`}
-                        >
-                          <div className="flex justify-between items-center">
-                            <span
-                              className={`body-font text-lg md:text-xl text-${oppositeColor}`}
-                            >
-                              Total Price:
-                            </span>
-                            <span
-                              className={`body-font text-2xl md:text-3xl font-bold text-${oppositeColor}`}
-                            >
-                              ₹{getTotalPrice()}
-                            </span>
-                          </div>
-                        </div>
-
-                        <button
-                          onClick={handleAddToCart}
-                          disabled={getTotalPrice() === 0}
-                          className={`w-full py-4 rounded-xl bg-${bgColor} text-${oppositeColor} body-font text-lg md:text-xl font-bold
-                  hover:scale-105 transition-transform duration-300 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed`}
-                        >
-                          Add to Cart
-                        </button>
-                      </>
-                    ) : (
-                      <>
-                        <div className="flex justify-between items-start mb-6">
-                          <h2
-                            className={`headings-font text-3xl md:text-5xl text-${bgColor}`}
-                          >
-                            {product.name}
-                          </h2>
-                          <button
-                            onClick={onClose}
-                            className={`text-${bgColor} hover:text-red-600 text-2xl font-bold transition-colors`}
-                          >
-                            ✕
-                          </button>
-                        </div>
-
-                        {product.description && (
-                          <p
-                            className={`body-font text-sm md:text-base text-${bgColor} mb-6 opacity-80 leading-relaxed`}
-                          >
-                            {product.description}
-                          </p>
-                        )}
-
-                        <h3
-                          className={`body-font text-xl md:text-2xl text-${bgColor} mb-4 font-bold`}
-                        >
-                          Key Benefits
-                        </h3>
-                        {product.keyBenefits && (
-                          <ul
-                            className={`body-font text-sm md:text-base text-${bgColor} space-y-3 mb-6 list-none`}
-                          >
-                            {product.keyBenefits.map((benefit, index) => (
-                              <li key={index} className="leading-relaxed">
-                                {benefit}
-                              </li>
-                            ))}
-                          </ul>
-                        )}
-                        <button
-                          onClick={() => setShowBenefits(false)}
-                          className={`w-full py-4 rounded-xl bg-${bgColor} text-${oppositeColor} body-font text-lg md:text-xl font-bold
-                      hover:scale-105 transition-transform duration-300 shadow-lg`}
-                        >
-                          Back to Product
-                        </button>
-                      </>
-                    )}
-                  </div>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={showBenefits ? "benefits" : "cart"}
+              initial={{ scale: 0.8, rotateY: 90, opacity: 0 }}
+              animate={{ scale: 1, rotateY: 0, opacity: 1 }}
+              exit={{ scale: 0.8, rotateY: 180, opacity: 0 }}
+              transition={{ duration: 0.6, ease: "easeInOut" }}
+              className={`bg-${oppositeColor} rounded-2xl shadow-2xl max-w-4xl w-full max-h-[95vh] overflow-y-auto`}
+              onClick={(e) => e.stopPropagation()}
+              style={{ transformStyle: "preserve-3d" }}
+            >
+              <div className="flex flex-col md:flex-row">
+                {/* Image Section - 30% */}
+                <div className="md:w-[30%] w-full p-6 flex items-center justify-center">
+                  <Image
+                    src={product.image}
+                    alt={product.name}
+                    className="w-full h-48 md:h-64 object-cover rounded-xl"
+                    loading="lazy"
+                  />
                 </div>
-              </motion.div>
-            </AnimatePresence>
-          </motion.div>
+
+                {/* Content Section - 70% */}
+                <div className="md:w-[70%] w-full p-6 md:p-8">
+                  {!showBenefits ? (
+                    <>
+                      <div className="flex justify-between items-start mb-6">
+                        <h2
+                          className={`headings-font text-3xl md:text-5xl text-${bgColor}`}
+                        >
+                          {product.name}
+                        </h2>
+                        <button
+                          onClick={onClose}
+                          className={`text-${bgColor} hover:text-red-600 text-2xl font-bold transition-colors`}
+                        >
+                          ✕
+                        </button>
+                      </div>
+
+                      {product.description && (
+                        <>
+                          <p
+                            className={`body-font text-sm md:text-base text-${bgColor} mb-2 opacity-80 leading-relaxed`}
+                          >
+                            {product.description.length > 100
+                              ? `${product.description.substring(0, 100)}...`
+                              : product.description}
+                          </p>
+                          <a
+                            href="#"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              setShowBenefits(true);
+                            }}
+                            className={`body-font text-sm md:text-base text-${bgColor} underline hover:opacity-100 opacity-70 transition-opacity mb-6 inline-block`}
+                          >
+                            Key benefits
+                          </a>
+                        </>
+                      )}
+
+                      <div className="mb-8">
+                        <h3
+                          className={`body-font text-xl md:text-2xl text-${bgColor} mb-4`}
+                        >
+                          Select Quantity
+                        </h3>
+                        <div className="space-y-4">
+                          {weightOptions.map((option) => (
+                            <div
+                              key={option.value}
+                              className={`flex items-center justify-between p-4 rounded-xl border-2 border-${bgColor}`}
+                            >
+                              <div className="flex items-center gap-4">
+                                <span
+                                  className={`body-font text-lg md:text-xl font-semibold text-${bgColor}`}
+                                >
+                                  {option.label}
+                                </span>
+                                <span
+                                  className={`body-font text-sm md:text-base text-${bgColor}`}
+                                >
+                                  ₹{getPrice(option.value)}
+                                </span>
+                              </div>
+                              <div className="flex items-center gap-3">
+                                <button
+                                  onClick={() =>
+                                    handleQuantityChange(option.value, -1)
+                                  }
+                                  disabled={quantities[option.value] === 0}
+                                  className={`w-8 h-8 md:w-10 md:h-10 rounded-lg bg-${bgColor} text-${oppositeColor} font-bold text-xl
+                            hover:scale-110 transition-transform disabled:opacity-50 disabled:cursor-not-allowed`}
+                                >
+                                  -
+                                </button>
+                                <span
+                                  className={`body-font text-lg md:text-xl font-bold text-${bgColor} min-w-[2rem] text-center`}
+                                >
+                                  {quantities[option.value]}
+                                </span>
+                                <button
+                                  onClick={() =>
+                                    handleQuantityChange(option.value, 1)
+                                  }
+                                  className={`w-8 h-8 md:w-10 md:h-10 rounded-lg bg-${bgColor} text-${oppositeColor} font-bold text-xl
+                            hover:scale-110 transition-transform`}
+                                >
+                                  +
+                                </button>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div
+                        className={`mb-6 p-4 rounded-xl bg-${bgColor} bg-opacity-10`}
+                      >
+                        <div className="flex justify-between items-center">
+                          <span
+                            className={`body-font text-lg md:text-xl text-${oppositeColor}`}
+                          >
+                            Total Price:
+                          </span>
+                          <span
+                            className={`body-font text-2xl md:text-3xl font-bold text-${oppositeColor}`}
+                          >
+                            ₹{getTotalPrice()}
+                          </span>
+                        </div>
+                      </div>
+
+                      <button
+                        onClick={handleAddToCart}
+                        disabled={getTotalPrice() === 0}
+                        className={`w-full py-4 rounded-xl bg-${bgColor} text-${oppositeColor} body-font text-lg md:text-xl font-bold
+                  hover:scale-105 transition-transform duration-300 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed`}
+                      >
+                        Add to Cart
+                      </button>
+                    </>
+                  ) : (
+                    <>
+                      <div className="flex justify-between items-start mb-6">
+                        <h2
+                          className={`headings-font text-3xl md:text-5xl text-${bgColor}`}
+                        >
+                          {product.name}
+                        </h2>
+                        <button
+                          onClick={onClose}
+                          className={`text-${bgColor} hover:text-red-600 text-2xl font-bold transition-colors`}
+                        >
+                          ✕
+                        </button>
+                      </div>
+
+                      {product.description && (
+                        <p
+                          className={`body-font text-sm md:text-base text-${bgColor} mb-6 opacity-80 leading-relaxed`}
+                        >
+                          {product.description}
+                        </p>
+                      )}
+
+                      <h3
+                        className={`body-font text-xl md:text-2xl text-${bgColor} mb-4 font-bold`}
+                      >
+                        Key Benefits
+                      </h3>
+                      {product.keyBenefits && (
+                        <ul
+                          className={`body-font text-sm md:text-base text-${bgColor} space-y-3 mb-6 list-none`}
+                        >
+                          {product.keyBenefits.map((benefit, index) => (
+                            <li key={index} className="leading-relaxed">
+                              {benefit}
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                      <button
+                        onClick={() => setShowBenefits(false)}
+                        className={`w-full py-4 rounded-xl bg-${bgColor} text-${oppositeColor} body-font text-lg md:text-xl font-bold
+                      hover:scale-105 transition-transform duration-300 shadow-lg`}
+                      >
+                        Back to Product
+                      </button>
+                    </>
+                  )}
+                </div>
+              </div>
+            </motion.div>
+          </AnimatePresence>
         </motion.div>
       )}
     </AnimatePresence>
