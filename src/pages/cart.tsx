@@ -4,6 +4,7 @@ import ScrollAnimation from "@/components/ui/ScrollAnimation";
 import BrownButton from "@/components/ui/BrownButton";
 import { cartStore } from "@/store/cartStore";
 import { primaryColor, secondaryColor } from "@/constants/colors";
+import { sendWhatsAppOrder } from "@/utils/whatsapp";
 
 function Cart() {
   const [cartItems, setCartItems] = useState(cartStore.getItems());
@@ -44,46 +45,8 @@ function Cart() {
     0
   );
 
-  const forceUpdate = () => {
-    setCartItems(cartStore.getItems());
-    setUpdateTrigger((prev) => prev + 1);
-  };
-
   const handleCheckout = () => {
-    const whatsappNumber = "+9138959463046";
-
-    let message = "🛒 *New Order from KukkeKart*\n\n";
-    message += "📋 *Order Details:*\n";
-
-    cartItems.forEach((item) => {
-      const itemIndex = message.split('\n').filter(line => line.match(/^\d+\./)).length;
-      const existingItemIndex = message.indexOf(`${item.name}\n`);
-      
-      if (existingItemIndex === -1) {
-        message += `${itemIndex + 1}. ${item.name}\n`;
-        message += `   Quantity: ${item.cartQuantity}x (${item.quantity})\n`;
-        message += `   Price: Rs.${item.price * item.cartQuantity}\n\n`;
-      }
-    });
-
-    message += `📊 *Order Summary:*\n`;
-    message += `Total Items: ${totalItems}\n`;
-    message += `Total Amount: Rs.${totalAmount}\n\n`;
-    message += "Thank you for choosing KukkeKart! 🙏";
-
-    // Detect if mobile device
-    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    
-    let whatsappUrl;
-    if (isMobile) {
-      // For mobile devices, use whatsapp:// protocol to open the app directly
-      whatsappUrl = `whatsapp://send?phone=${whatsappNumber}&text=${encodeURIComponent(message)}`;
-    } else {
-      // For desktop, use web.whatsapp.com
-      whatsappUrl = `https://web.whatsapp.com/send?phone=${whatsappNumber.replace("+", "")}&text=${encodeURIComponent(message)}`;
-    }
-
-    window.open(whatsappUrl, "_blank");
+    sendWhatsAppOrder(cartItems, totalItems, totalAmount);
   };
 
   return (
