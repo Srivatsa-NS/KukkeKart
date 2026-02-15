@@ -116,17 +116,24 @@ function ProductModal({
           onClick={onClose}
           style={{ perspective: "2000px" }}
         >
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={showBenefits ? "benefits" : "cart"}
-              initial={{ rotateY: 180 }}
-              animate={{ rotateY: 0 }}
-              exit={{ rotateY: -180 }}
-              transition={{ duration: 0.6, ease: "easeInOut" }}
-              className={`bg-${oppositeColor} rounded-2xl shadow-2xl max-w-4xl w-full max-h-[95vh] overflow-y-auto`}
-              onClick={(e) => e.stopPropagation()}
-              style={{ transformStyle: "preserve-3d", backfaceVisibility: "hidden" }}
-            >
+          <motion.div
+            initial={{ scale: 0.8, rotateY: 90, opacity: 0 }}
+            animate={{ scale: 1, rotateY: 0, opacity: 1 }}
+            exit={{ scale: 0.8, rotateY: -90, opacity: 0 }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+            onClick={(e) => e.stopPropagation()}
+            style={{ transformStyle: "preserve-3d" }}
+          >
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={showBenefits ? "benefits" : "cart"}
+                initial={{ rotateY: 180 }}
+                animate={{ rotateY: 0 }}
+                exit={{ rotateY: -180 }}
+                transition={{ duration: 0.6, ease: "easeInOut" }}
+                className={`bg-${oppositeColor} rounded-2xl shadow-2xl max-w-4xl w-full max-h-[95vh] overflow-y-auto`}
+                style={{ transformStyle: "preserve-3d", backfaceVisibility: "hidden" }}
+              >
               <div className="flex flex-col md:flex-row">
                 {/* Image Section - 30% */}
                 <div className="md:w-[30%] w-full p-6 flex items-center justify-center">
@@ -312,6 +319,7 @@ function ProductModal({
               </div>
             </motion.div>
           </AnimatePresence>
+          </motion.div>
         </motion.div>
       )}
     </AnimatePresence>
