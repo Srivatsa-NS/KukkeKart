@@ -8,15 +8,34 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { secondaryColor, primaryColor } from "@/constants/colors";
 import { WHATSAPP_CONFIG } from "@/constants/whatsapp";
+import { getWhatsAppUrl } from "@/utils/whatsapp";
 import AnimatedModal from "@/components/ui/AnimatedModal";
 
 function Contact() {
   const [showSocialPopup, setShowSocialPopup] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    subject: "",
+    message: "",
+  });
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const isFormValid = Object.values(formData).every((val) => val.trim() !== "");
 
   const handleSendMessage = (e: React.FormEvent) => {
     e.preventDefault();
     setShowSocialPopup(true);
   };
+
+  const whatsappMessage = `Hi KukkeKart! \uD83D\uDC4B\n\nI have an inquiry regarding: *${formData.subject}* \uD83D\uDCDD\n\n${formData.message}\n\n--------------------------------\n*My Details:*\n\uD83D\uDC64 Name: ${formData.name}\n\uD83D\uDCE7 Email: ${formData.email}\n\uD83D\uDCDE Phone: ${formData.phone}`;
+
   return (
     <div className="min-h-screen bg-amber-800 py-8 px-4 -mt-8 md:-mt-12 lg:-mt-16">
       <div className="max-w-6xl mx-auto">
@@ -181,6 +200,9 @@ function Contact() {
                 </label>
                 <input
                   type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
                   className="w-full px-4 py-3 border border-amber-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-600 focus:border-transparent"
                   placeholder="Your full name"
                 />
@@ -192,6 +214,9 @@ function Contact() {
                 </label>
                 <input
                   type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
                   className="w-full px-4 py-3 border border-amber-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-600 focus:border-transparent"
                   placeholder="your.email@example.com"
                 />
@@ -203,6 +228,9 @@ function Contact() {
                 </label>
                 <input
                   type="tel"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
                   className="w-full px-4 py-3 border border-amber-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-600 focus:border-transparent"
                   placeholder="+91 98765 43210"
                 />
@@ -214,6 +242,9 @@ function Contact() {
                 </label>
                 <input
                   type="text"
+                  name="subject"
+                  value={formData.subject}
+                  onChange={handleChange}
                   className="w-full px-4 py-3 border border-amber-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-600 focus:border-transparent"
                   placeholder="What is this about?"
                 />
@@ -224,6 +255,9 @@ function Contact() {
                   Message
                 </label>
                 <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
                   rows={5}
                   className="w-full px-4 py-3 border border-amber-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-600 focus:border-transparent resize-vertical"
                   placeholder="Tell us how we can help you..."
@@ -232,7 +266,12 @@ function Contact() {
 
               <button
                 type="submit"
-                className={`w-full bg-${primaryColor} text-${secondaryColor} py-3 px-6 rounded-lg body-font font-bold text-lg hover:bg-${secondaryColor} hover:text-${primaryColor} border-2 hover:border-${primaryColor} transition-colors duration-300 shadow-lg hover:shadow-xl cursor-pointer`}
+                disabled={!isFormValid}
+                className={`w-full bg-${primaryColor} text-${secondaryColor} py-3 px-6 rounded-lg body-font font-bold text-lg border-2 transition-colors duration-300 shadow-lg ${
+                  !isFormValid
+                    ? "opacity-50 cursor-not-allowed border-transparent"
+                    : `hover:bg-${secondaryColor} hover:text-${primaryColor} hover:border-${primaryColor} hover:shadow-xl cursor-pointer`
+                }`}
               >
                 Send Message
               </button>
@@ -303,7 +342,10 @@ function Contact() {
               </svg>
             </a> */}
             <a
-              href={"https://wa.me/" + WHATSAPP_CONFIG.PHONE_NUMBER}
+              href={getWhatsAppUrl(
+                whatsappMessage,
+                WHATSAPP_CONFIG.PHONE_NUMBER
+              )}
               target="_blank"
               rel="noopener noreferrer"
               className={`text-${primaryColor} hover:text-green-600 transition-colors`}
