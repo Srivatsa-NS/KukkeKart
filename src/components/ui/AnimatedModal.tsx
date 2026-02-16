@@ -16,7 +16,7 @@ function AnimatedModal({ isOpen, onClose, children }: AnimatedModalProps) {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
-          className="fixed inset-0 bg-black bg-opacity-20 backdrop-blur-sm flex items-center justify-center z-50 p-4"
+          className="fixed inset-0 bg-black/20 backdrop-blur-md flex items-center justify-center z-50 p-4"
           onClick={onClose}
           style={{ perspective: "2000px" }}
         >
