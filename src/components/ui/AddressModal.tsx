@@ -72,7 +72,7 @@ function AddressModal({
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className={`bg-${oppositeColor} rounded-2xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-y-auto p-4 md:p-6`}
+            className={`bg-${oppositeColor} rounded-2xl shadow-2xl max-w-md md:max-w-2xl lg:max-w-3xl w-full max-h-[90vh] overflow-y-auto p-4 md:p-6 lg:p-8`}
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex justify-between items-center mb-4 md:mb-6">
@@ -90,36 +90,38 @@ function AddressModal({
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-3 md:space-y-4">
-              <div>
-                <label
-                  className={`body-font text-sm text-${bgColor} mb-1 block`}
-                >
-                  Full Name *
-                </label>
-                <input
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  className={`w-full p-2 rounded-lg border border-${bgColor} border-opacity-30 body-font text-${bgColor} bg-transparent focus:outline-none focus:border-opacity-100`}
-                />
-              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
+                <div>
+                  <label
+                    className={`body-font text-sm text-${bgColor} mb-1 block`}
+                  >
+                    Full Name *
+                  </label>
+                  <input
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    className={`w-full p-2 rounded-lg border border-${bgColor} border-opacity-30 body-font text-${bgColor} bg-transparent focus:outline-none focus:border-opacity-100`}
+                  />
+                </div>
 
-              <div>
-                <label
-                  className={`body-font text-sm text-${bgColor} mb-1 block`}
-                >
-                  Phone Number *
-                </label>
-                <input
-                  type="tel"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  required
-                  className={`w-full p-2 rounded-lg border border-${bgColor} border-opacity-30 body-font text-${bgColor} bg-transparent focus:outline-none focus:border-opacity-100`}
-                />
+                <div>
+                  <label
+                    className={`body-font text-sm text-${bgColor} mb-1 block`}
+                  >
+                    Phone Number *
+                  </label>
+                  <input
+                    type="tel"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    required
+                    className={`w-full p-2 rounded-lg border border-${bgColor} border-opacity-30 body-font text-${bgColor} bg-transparent focus:outline-none focus:border-opacity-100`}
+                  />
+                </div>
               </div>
 
               <div>
@@ -153,7 +155,7 @@ function AddressModal({
                 />
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4">
                 <div>
                   <label
                     className={`body-font text-sm text-${bgColor} mb-1 block`}
@@ -185,22 +187,22 @@ function AddressModal({
                     className={`w-full p-2 rounded-lg border border-${bgColor} border-opacity-30 body-font text-${bgColor} bg-transparent focus:outline-none focus:border-opacity-100`}
                   />
                 </div>
-              </div>
 
-              <div>
-                <label
-                  className={`body-font text-sm text-${bgColor} mb-1 block`}
-                >
-                  Pincode *
-                </label>
-                <input
-                  type="text"
-                  name="pincode"
-                  value={formData.pincode}
-                  onChange={handleChange}
-                  required
-                  className={`w-full p-2 rounded-lg border border-${bgColor} border-opacity-30 body-font text-${bgColor} bg-transparent focus:outline-none focus:border-opacity-100`}
-                />
+                <div>
+                  <label
+                    className={`body-font text-sm text-${bgColor} mb-1 block`}
+                  >
+                    Pincode *
+                  </label>
+                  <input
+                    type="text"
+                    name="pincode"
+                    value={formData.pincode}
+                    onChange={handleChange}
+                    required
+                    className={`w-full p-2 rounded-lg border border-${bgColor} border-opacity-30 body-font text-${bgColor} bg-transparent focus:outline-none focus:border-opacity-100`}
+                  />
+                </div>
               </div>
 
               <button
