@@ -25,7 +25,11 @@ const buildOrderMessage = (
     )
     .join("\n\n");
 
-  const addressText = `\n\n*Delivery Address:*\n${address.name}\n${address.phone}\n${address.addressLine1}${address.addressLine2 ? '\n' + address.addressLine2 : ''}\n${address.city}, ${address.state} - ${address.pincode}`;
+  const addressText = `\n\n*Delivery Address:*\n${address.name}\n${
+    address.phone
+  }\n${address.addressLine1}${
+    address.addressLine2 ? "\n" + address.addressLine2 : ""
+  }\n${address.city}, ${address.state} - ${address.pincode}`;
 
   return `Hi, I would like to place an order:\n\n${items}\n\n*Total Items:* ${totalItems}\n*Total Amount:* ${WHATSAPP_CONFIG.CURRENCY}${totalAmount}${addressText}`;
 };
@@ -50,9 +54,14 @@ export const sendWhatsAppOrder = (
   totalItems: number,
   totalAmount: number,
   address: AddressData,
-  phoneNumber: string = WHATSAPP_CONFIG.PHONE_NUMBER
+  phoneNumber: string = "+" + WHATSAPP_CONFIG.PHONE_NUMBER
 ): void => {
-  const message = buildOrderMessage(cartItems, totalItems, totalAmount, address);
+  const message = buildOrderMessage(
+    cartItems,
+    totalItems,
+    totalAmount,
+    address
+  );
   const url = getWhatsAppUrl(message, phoneNumber);
   window.open(url, "_blank");
 };

@@ -30,23 +30,6 @@ function Footer() {
               Your destination for authentic, homemade spices that transform
               every dish into a culinary masterpiece.
             </p>
-            <div className="flex space-x-4">
-              <div
-                className={`w-12 h-12 bg-${secondaryColor} bg-opacity-20 rounded-full flex items-center justify-center hover:bg-opacity-30 transition-all cursor-pointer`}
-              >
-                <span className="text-xl">📧</span>
-              </div>
-              <div
-                className={`w-12 h-12 bg-${secondaryColor} bg-opacity-20 rounded-full flex items-center justify-center hover:bg-opacity-30 transition-all cursor-pointer`}
-              >
-                <span className="text-xl">📱</span>
-              </div>
-              <div
-                className={`w-12 h-12 bg-${secondaryColor} bg-opacity-20 rounded-full flex items-center justify-center hover:bg-opacity-30 transition-all cursor-pointer`}
-              >
-                <span className="text-xl">🌐</span>
-              </div>
-            </div>
           </div>
 
           {/* Quick Links */}
@@ -93,27 +76,6 @@ function Footer() {
               </li>
             </ul>
           </div>
-
-          {/* Contact Info */}
-          <div>
-            <h4 className="headings-font text-xl font-bold mb-6 tracking-wide">
-              Get In Touch
-            </h4>
-            <div className="body-font space-y-4">
-              <div className="flex items-center space-x-3">
-                <span className="text-lg">✉️</span>
-                <span className="text-base">info@kukkekart.com</span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <span className="text-lg">📞</span>
-                <span className="text-base">+91 12345 67890</span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <span className="text-lg">📍</span>
-                <span className="text-base">Spice Gardens, India</span>
-              </div>
-            </div>
-          </div>
         </div>
 
         {/* Bottom Section */}
@@ -122,7 +84,7 @@ function Footer() {
         >
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="body-font text-sm opacity-75">
-              &copy; 2024 KukkeKart. All rights reserved. Made with ❤️ for spice
+              &copy; 2026 KukkeKart. All rights reserved. Made with ❤️ for spice
               lovers.
             </p>
           </div>
