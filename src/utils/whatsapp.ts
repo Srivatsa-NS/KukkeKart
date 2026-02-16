@@ -43,10 +43,7 @@ const getWhatsAppUrl = (message: string, phoneNumber: string): string => {
 
   return isMobile
     ? `whatsapp://send?phone=${phoneNumber}&text=${encodedMessage}`
-    : `https://web.whatsapp.com/send?phone=${phoneNumber.replace(
-        "+",
-        ""
-      )}&text=${encodedMessage}`;
+    : `https://web.whatsapp.com/send?phone=${phoneNumber}&text=${encodedMessage}`;
 };
 
 export const sendWhatsAppOrder = (
@@ -54,7 +51,7 @@ export const sendWhatsAppOrder = (
   totalItems: number,
   totalAmount: number,
   address: AddressData,
-  phoneNumber: string = "+" + WHATSAPP_CONFIG.PHONE_NUMBER
+  phoneNumber: string = "916362612937"
 ): void => {
   const message = buildOrderMessage(
     cartItems,
