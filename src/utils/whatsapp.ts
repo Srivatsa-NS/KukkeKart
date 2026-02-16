@@ -1,4 +1,5 @@
 import { WHATSAPP_CONFIG } from "@/constants/whatsapp";
+import { AddressData } from "@/components/ui/AddressModal";
 
 interface CartItem {
   name: string;
@@ -10,7 +11,8 @@ interface CartItem {
 const buildOrderMessage = (
   cartItems: CartItem[],
   totalItems: number,
-  totalAmount: number
+  totalAmount: number,
+  address: AddressData
 ): string => {
   const items = cartItems
     .map(
@@ -23,7 +25,9 @@ const buildOrderMessage = (
     )
     .join("\n\n");
 
-  return `🛒 *New Order from ${WHATSAPP_CONFIG.BUSINESS_NAME}*\n\n📋 *Order Details:*\n${items}\n\n📊 *Order Summary:*\nTotal Items: ${totalItems}\nTotal Amount: ${WHATSAPP_CONFIG.CURRENCY}${totalAmount}`;
+  const addressText = `\n\n*Delivery Address:*\n${address.name}\n${address.phone}\n${address.addressLine1}${address.addressLine2 ? '\n' + address.addressLine2 : ''}\n${address.city}, ${address.state} - ${address.pincode}`;
+
+  return `Hi, I would like to place an order:\n\n${items}\n\n*Total Items:* ${totalItems}\n*Total Amount:* ${WHATSAPP_CONFIG.CURRENCY}${totalAmount}${addressText}`;
 };
 
 const getWhatsAppUrl = (message: string, phoneNumber: string): string => {
@@ -45,9 +49,10 @@ export const sendWhatsAppOrder = (
   cartItems: CartItem[],
   totalItems: number,
   totalAmount: number,
+  address: AddressData,
   phoneNumber: string = WHATSAPP_CONFIG.PHONE_NUMBER
 ): void => {
-  const message = buildOrderMessage(cartItems, totalItems, totalAmount);
+  const message = buildOrderMessage(cartItems, totalItems, totalAmount, address);
   const url = getWhatsAppUrl(message, phoneNumber);
   window.open(url, "_blank");
 };

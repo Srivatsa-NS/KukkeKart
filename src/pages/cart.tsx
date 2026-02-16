@@ -5,10 +5,12 @@ import BrownButton from "@/components/ui/BrownButton";
 import { cartStore } from "@/store/cartStore";
 import { primaryColor, secondaryColor } from "@/constants/colors";
 import { sendWhatsAppOrder } from "@/utils/whatsapp";
+import AddressModal, { AddressData } from "@/components/ui/AddressModal";
 
 function Cart() {
   const [cartItems, setCartItems] = useState(cartStore.getItems());
   const [updateTrigger, setUpdateTrigger] = useState(0);
+  const [showAddressModal, setShowAddressModal] = useState(false);
 
   useEffect(() => {
     setCartItems(cartStore.getItems());
@@ -46,7 +48,12 @@ function Cart() {
   );
 
   const handleCheckout = () => {
-    sendWhatsAppOrder(cartItems, totalItems, totalAmount);
+    setShowAddressModal(true);
+  };
+
+  const handleAddressSubmit = (address: AddressData) => {
+    sendWhatsAppOrder(cartItems, totalItems, totalAmount, address);
+    setShowAddressModal(false);
   };
 
   return (
@@ -137,6 +144,13 @@ function Cart() {
           </div>
         </ScrollAnimation>
       )}
+
+      <AddressModal
+        isOpen={showAddressModal}
+        onClose={() => setShowAddressModal(false)}
+        onSubmit={handleAddressSubmit}
+        bgColor={primaryColor}
+      />
     </div>
   );
 }
