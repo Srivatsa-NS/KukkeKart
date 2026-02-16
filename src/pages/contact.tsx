@@ -79,7 +79,7 @@ function Contact() {
                     <p className="body-font text-amber-800 font-semibold">
                       Address
                     </p>
-                    <p className="text-amber-700">{WHATSAPP_CONFIG.ADRESS}</p>
+                    <p className="text-amber-700">{WHATSAPP_CONFIG.ADDRESS}</p>
                   </div>
                 </div>
 
