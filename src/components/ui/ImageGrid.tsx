@@ -60,7 +60,7 @@ function ImageGrid({
   };
 
   return (
-    <div className="px-2 sm:px-4 md:px-10 lg:px-20 pt-5 pb-20 max-w-full overflow-x-hidden mt-10 min-[400px]:max-[550px]:m-10 min-[550px]:max-[640px]:m-10">
+    <div className="px-2 sm:px-4 md:px-10 lg:px-20 pt-5 pb-20 max-w-full overflow-x-hidden mt-20 min-[400px]:max-[550px]:m-10 min-[550px]:max-[640px]:m-10">
       <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-1 gap-y-1 sm:gap-x-2 sm:gap-y-2 md:gap-x-3 md:gap-y-4 lg:gap-x-1 lg:gap-y-6 max-w-full">
         {gridItems.map((gridItem, index) => (
           <ScrollAnimation key={index}>

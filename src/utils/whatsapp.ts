@@ -34,7 +34,10 @@ const buildOrderMessage = (
   return `Hi, I would like to place an order:\n\n${items}\n\n*Total Items:* ${totalItems}\n*Total Amount:* ${WHATSAPP_CONFIG.CURRENCY}${totalAmount}${addressText}`;
 };
 
-export const getWhatsAppUrl = (message: string, phoneNumber: string): string => {
+export const getWhatsAppUrl = (
+  message: string,
+  phoneNumber: string
+): string => {
   const isMobile =
     typeof navigator !== "undefined" &&
     /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(

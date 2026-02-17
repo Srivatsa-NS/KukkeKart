@@ -90,7 +90,7 @@ function Index() {
         </div>
       </div>
       <ScrollAnimation
-        className={`relative mb-2 md:mb-10 bg-${secondaryColor} items-center w-full px-10 py-10 text-${primaryColor}`}
+        className={`relative mb-10 md:mb-10 bg-${secondaryColor} items-center w-full px-10 py-10 text-${primaryColor}`}
       >
         <p className="headings-font text-4xl md:text-5xl lg:text-6xl absolute left-1/2 -translate-x-1/2 whitespace-nowrap">
           Our Best Sellers

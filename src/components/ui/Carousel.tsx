@@ -69,16 +69,6 @@ function Carousel({ slides }: CarouselProps) {
                 )}
               </AnimatePresence>
             </ScrollAnimation>
-            <ScrollAnimation>
-              {slide.buy && (
-                <div className="mt-3 sm:mt-7">
-                  <BrownButton
-                    name="Add to Cart"
-                    textSize="text-xs sm:text-base md:text-xl lg:text-2xl xl:text-3xl"
-                  />
-                </div>
-              )}
-            </ScrollAnimation>
           </div>
         ))}
       </motion.div>
