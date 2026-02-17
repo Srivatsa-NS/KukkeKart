@@ -79,28 +79,29 @@ function Products() {
     <div className={`bg-${primaryColor} min-h-screen`}>
       <ScrollAnimation>
         <div className="text-center pt-10 pb-8">
-          <p className="headings-font text-amber-50 text-6xl">Our products</p>
+          <p className="headings-font text-amber-50 text-5xl md:text-6xl">Our products</p>
         </div>
       </ScrollAnimation>
 
-      <div className="px-2 sm:px-4 md:px-10 lg:px-20 mb-6">
-        <div className="mx-15 sm:mx-3 md:mx-3 lg:mx-10 flex flex-col sm:flex-row justify-between items-stretch gap-4">
-          <div className="flex flex-col sm:flex-row gap-4 items-stretch w-full sm:w-auto">
-            <FilterDropdown
-              onFilterChange={handleFilterChange}
-              selectedValue={currentFilter}
-              isClearing={isClearing}
-            />
-            <SortDropdown
-              onSortChange={handleSortChange}
-              selectedValue={currentSort}
-              isClearing={isClearing}
-            />
-          </div>
-          <button
-            onClick={handleClearAll}
-            disabled={isClearing}
-            className={`px-3 py-2 sm:px-4 sm:py-2 md:px-5 md:py-2 text-sm sm:text-base md:text-lg border bg-${secondaryColor} text-${primaryColor} border-${primaryColor} 
+      <ScrollAnimation>
+        <div className="px-2 sm:px-4 md:px-10 lg:px-20 md:mt-10">
+          <div className="mx-15 sm:mx-3 md:mx-3 lg:mx-10 flex flex-col sm:flex-row justify-between items-stretch gap-4">
+            <div className="flex flex-col sm:flex-row gap-4 items-stretch w-full sm:w-auto">
+              <FilterDropdown
+                onFilterChange={handleFilterChange}
+                selectedValue={currentFilter}
+                isClearing={isClearing}
+              />
+              <SortDropdown
+                onSortChange={handleSortChange}
+                selectedValue={currentSort}
+                isClearing={isClearing}
+              />
+            </div>
+            <button
+              onClick={handleClearAll}
+              disabled={isClearing}
+              className={`px-3 py-2 sm:px-4 sm:py-2 md:px-5 md:py-2 text-sm sm:text-base md:text-lg border bg-${secondaryColor} text-${primaryColor} border-${primaryColor} 
           hover:bg-${primaryColor} hover:text-${secondaryColor} hover:border-${secondaryColor} transition-all 
           duration-500 cursor-pointer w-full sm:w-auto font-semibold ${
             isClearing
@@ -108,11 +109,13 @@ function Products() {
                 "flex items-center justify-center px-0 py-0 mx-auto sm:mx-0 text-base sm:text-xl"
               : "rounded-lg"
           }`}
-          >
-            {isClearing ? "✨" : "Clear All"}
-          </button>
+            >
+              {isClearing ? "✨" : "Clear All"}
+            </button>
+          </div>
         </div>
-      </div>
+      </ScrollAnimation>
+
       <ImageGrid
         key={gridKey}
         bgColor={primaryColor}

@@ -10,6 +10,7 @@ import { secondaryColor, primaryColor } from "@/constants/colors";
 import { WHATSAPP_CONFIG } from "@/constants/whatsapp";
 import { getWhatsAppUrl } from "@/utils/whatsapp";
 import AnimatedModal from "@/components/ui/AnimatedModal";
+import ScrollAnimation from "@/components/ui/ScrollAnimation";
 
 function Contact() {
   const [showSocialPopup, setShowSocialPopup] = useState(false);
@@ -41,7 +42,7 @@ function Contact() {
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
           <h1
-            className={`headings-font text-6xl md:text-8xl text-${secondaryColor} mt-20`}
+            className={`headings-font text-4xl md:text-6xl text-${secondaryColor} mt-20 mb-6`}
           >
             Get in Touch
           </h1>
@@ -51,32 +52,33 @@ function Contact() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
-          <div className="space-y-8">
-            <div className="bg-white rounded-lg shadow-lg p-6">
-              <h2
-                className={`headings-font text-4xl text-${primaryColor} mb-6`}
-              >
-                Contact Information
-              </h2>
+        <ScrollAnimation>
+          <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
+            <div className="space-y-8">
+              <div className="bg-white rounded-lg shadow-lg p-6">
+                <h2
+                  className={`headings-font text-4xl text-${primaryColor} mb-6`}
+                >
+                  Contact Information
+                </h2>
 
-              <div className="space-y-4">
-                <div className="flex items-center space-x-4">
-                  <FontAwesomeIcon
-                    icon={faPhone}
-                    className={`text-${primaryColor} text-xl`}
-                  />
-                  <div>
-                    <p className="body-font text-amber-800 font-semibold">
-                      Phone
-                    </p>
-                    <p className="text-amber-700">
-                      +{WHATSAPP_CONFIG.PHONE_NUMBER}
-                    </p>
+                <div className="space-y-4">
+                  <div className="flex items-center space-x-4">
+                    <FontAwesomeIcon
+                      icon={faPhone}
+                      className={`text-${primaryColor} text-xl`}
+                    />
+                    <div>
+                      <p className="body-font text-amber-800 font-semibold">
+                        Phone
+                      </p>
+                      <p className="text-amber-700">
+                        +{WHATSAPP_CONFIG.PHONE_NUMBER}
+                      </p>
+                    </div>
                   </div>
-                </div>
 
-                {/* <div className="flex items-center space-x-4">
+                  {/* <div className="flex items-center space-x-4">
                   <FontAwesomeIcon
                     icon={faEnvelope}
                     className={`text-${primaryColor} text-xl`}
@@ -89,39 +91,41 @@ function Contact() {
                   </div>
                 </div> */}
 
-                <div className="flex items-center space-x-4">
-                  <FontAwesomeIcon
-                    icon={faMapMarkerAlt}
-                    className={`text-${primaryColor} text-xl`}
-                  />
-                  <div>
-                    <p className="body-font text-amber-800 font-semibold">
-                      Address
-                    </p>
-                    <p className="text-amber-700">{WHATSAPP_CONFIG.ADDRESS}</p>
+                  <div className="flex items-center space-x-4">
+                    <FontAwesomeIcon
+                      icon={faMapMarkerAlt}
+                      className={`text-${primaryColor} text-xl`}
+                    />
+                    <div>
+                      <p className="body-font text-amber-800 font-semibold">
+                        Address
+                      </p>
+                      <p className="text-amber-700">
+                        {WHATSAPP_CONFIG.ADDRESS}
+                      </p>
+                    </div>
                   </div>
-                </div>
 
-                <div className="flex items-center space-x-4">
-                  <FontAwesomeIcon
-                    icon={faClock}
-                    className={`text-${primaryColor} text-xl`}
-                  />
-                  <div>
-                    <p className="body-font text-amber-800 font-semibold">
-                      Business Hours
-                    </p>
-                    <p className="text-amber-700">
-                      Mon - Sat: 9:00 AM - 7:00 PM
-                      <br />
-                      Sunday: 10:00 AM - 5:00 PM
-                    </p>
+                  <div className="flex items-center space-x-4">
+                    <FontAwesomeIcon
+                      icon={faClock}
+                      className={`text-${primaryColor} text-xl`}
+                    />
+                    <div>
+                      <p className="body-font text-amber-800 font-semibold">
+                        Business Hours
+                      </p>
+                      <p className="text-amber-700">
+                        Mon - Sat: 9:00 AM - 7:00 PM
+                        <br />
+                        Sunday: 10:00 AM - 5:00 PM
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
 
-            {/* <div className="bg-white rounded-lg shadow-lg p-6">
+              {/* <div className="bg-white rounded-lg shadow-lg p-6">
               <h2
                 className={`headings-font text-4xl text-${primaryColor} mb-6`}
               >
@@ -186,118 +190,122 @@ function Contact() {
                 </a>
               </div>
             </div> */}
-          </div>
+            </div>
 
-          <div className="bg-white rounded-lg shadow-lg p-6">
-            <h2 className={`headings-font text-4xl text-${primaryColor} mb-6`}>
-              Send us a Message
-            </h2>
-
-            <form className="space-y-4" onSubmit={handleSendMessage}>
-              <div>
-                <label className="body-font text-amber-800 font-semibold block mb-2">
-                  Name
-                </label>
-                <input
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 border border-amber-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-600 focus:border-transparent"
-                  placeholder="Your full name"
-                />
-              </div>
-
-              <div>
-                <label className="body-font text-amber-800 font-semibold block mb-2">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 border border-amber-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-600 focus:border-transparent"
-                  placeholder="your.email@example.com"
-                />
-              </div>
-
-              <div>
-                <label className="body-font text-amber-800 font-semibold block mb-2">
-                  Phone
-                </label>
-                <input
-                  type="tel"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 border border-amber-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-600 focus:border-transparent"
-                  placeholder="+91 98765 43210"
-                />
-              </div>
-
-              <div>
-                <label className="body-font text-amber-800 font-semibold block mb-2">
-                  Subject
-                </label>
-                <input
-                  type="text"
-                  name="subject"
-                  value={formData.subject}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 border border-amber-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-600 focus:border-transparent"
-                  placeholder="What is this about?"
-                />
-              </div>
-
-              <div>
-                <label className="body-font text-amber-800 font-semibold block mb-2">
-                  Message
-                </label>
-                <textarea
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  rows={5}
-                  className="w-full px-4 py-3 border border-amber-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-600 focus:border-transparent resize-vertical"
-                  placeholder="Tell us how we can help you..."
-                ></textarea>
-              </div>
-
-              <button
-                type="submit"
-                disabled={!isFormValid}
-                className={`w-full bg-${primaryColor} text-${secondaryColor} py-3 px-6 rounded-lg body-font font-bold text-lg border-2 transition-colors duration-300 shadow-lg ${
-                  !isFormValid
-                    ? "opacity-50 cursor-not-allowed border-transparent"
-                    : `hover:bg-${secondaryColor} hover:text-${primaryColor} hover:border-${primaryColor} hover:shadow-xl cursor-pointer`
-                }`}
+            <div className="bg-white rounded-lg shadow-lg p-6">
+              <h2
+                className={`headings-font text-4xl text-${primaryColor} mb-6`}
               >
-                Send Message
-              </button>
-            </form>
-          </div>
-        </div>
+                Send us a Message
+              </h2>
 
-        <div className="mt-12 bg-white rounded-lg shadow-lg p-6">
-          <h2
-            className={`headings-font text-4xl text-${primaryColor} mb-6 text-center`}
-          >
-            Find Us
-          </h2>
-          <div className="bg-amber-800 rounded-lg h-64 overflow-hidden shadow-inner">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6471.245929189673!2d75.61460699665166!3d12.663098838433362!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba4e40b51fd410b%3A0x7a93f9435ccffec2!2sNoochila%2C%20Karnataka%20574238!5e0!3m2!1sen!2sin!4v1771269369362!5m2!1sen!2sin"
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen={true}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="KukkeKart Location"
-            ></iframe>
+              <form className="space-y-4" onSubmit={handleSendMessage}>
+                <div>
+                  <label className="body-font text-amber-800 font-semibold block mb-2">
+                    Name
+                  </label>
+                  <input
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 border border-amber-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-600 focus:border-transparent"
+                    placeholder="Your full name"
+                  />
+                </div>
+
+                <div>
+                  <label className="body-font text-amber-800 font-semibold block mb-2">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 border border-amber-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-600 focus:border-transparent"
+                    placeholder="your.email@example.com"
+                  />
+                </div>
+
+                <div>
+                  <label className="body-font text-amber-800 font-semibold block mb-2">
+                    Phone
+                  </label>
+                  <input
+                    type="tel"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 border border-amber-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-600 focus:border-transparent"
+                    placeholder="+91 98765 43210"
+                  />
+                </div>
+
+                <div>
+                  <label className="body-font text-amber-800 font-semibold block mb-2">
+                    Subject
+                  </label>
+                  <input
+                    type="text"
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 border border-amber-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-600 focus:border-transparent"
+                    placeholder="What is this about?"
+                  />
+                </div>
+
+                <div>
+                  <label className="body-font text-amber-800 font-semibold block mb-2">
+                    Message
+                  </label>
+                  <textarea
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    rows={5}
+                    className="w-full px-4 py-3 border border-amber-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-600 focus:border-transparent resize-vertical"
+                    placeholder="Tell us how we can help you..."
+                  ></textarea>
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={!isFormValid}
+                  className={`w-full bg-${primaryColor} text-${secondaryColor} py-3 px-6 rounded-lg body-font font-bold text-lg border-2 transition-colors duration-300 shadow-lg ${
+                    !isFormValid
+                      ? "opacity-50 cursor-not-allowed border-transparent"
+                      : `hover:bg-${secondaryColor} hover:text-${primaryColor} hover:border-${primaryColor} hover:shadow-xl cursor-pointer`
+                  }`}
+                >
+                  Send Message
+                </button>
+              </form>
+            </div>
           </div>
-        </div>
+        </ScrollAnimation>
+        <ScrollAnimation>
+          <div className="mt-12 bg-white rounded-lg shadow-lg p-6">
+            <h2
+              className={`headings-font text-4xl text-${primaryColor} mb-6 text-center`}
+            >
+              Find Us
+            </h2>
+            <div className="bg-amber-800 rounded-lg h-64 overflow-hidden shadow-inner">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6471.245929189673!2d75.61460699665166!3d12.663098838433362!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba4e40b51fd410b%3A0x7a93f9435ccffec2!2sNoochila%2C%20Karnataka%20574238!5e0!3m2!1sen!2sin!4v1771269369362!5m2!1sen!2sin"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen={true}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="KukkeKart Location"
+              ></iframe>
+            </div>
+          </div>
+        </ScrollAnimation>
       </div>
 
       <AnimatedModal

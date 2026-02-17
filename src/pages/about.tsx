@@ -8,7 +8,7 @@ function About() {
       <div className={`bg-${primaryColor} py-16 px-4`}>
         <div className="max-w-4xl mx-auto text-center">
           <h1
-            className={`headings-font text-4xl md:text-6xl text-${secondaryColor} mb-6`}
+            className={`headings-font text-4xl md:text-5xl text-${secondaryColor} mb-6`}
           >
             About Us – KukkeKart
           </h1>
